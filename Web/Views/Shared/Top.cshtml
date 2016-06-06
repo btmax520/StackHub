@@ -1,0 +1,22 @@
+﻿<div id="top-menu" class="am-g">
+    <div class="am-u-md-2"><a href="/index.html"><img src="/img/logo.jpg" class="am-img-responsive" /></a></div>
+    
+    @foreach (var item in ViewBag.Catetories)
+    {
+        <div class="am-u-md-2">
+            @if (item.active != null && (bool)item.active)
+            { 
+                <a href="@item.url" class="am-btn am-btn-primary">@item.name</a>
+                dynamic current = new Newtonsoft.Json.Linq.JObject();
+                current.id = item.id;
+                current.name = item.name;
+                ViewBag.CurrentCategory = current;
+            }
+            else
+            {
+                <a href="@item.url" class="am-btn am-btn-default">@item.name</a>
+            }
+        </div>
+    }
+    <div class="am-u-md-2"><a href="~/publish/@ViewBag.CurrentCategory.id" class="am-btn am-btn-danger">发布 @ViewBag.CurrentCategory.name</a></div>
+</div>

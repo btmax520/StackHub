@@ -1,0 +1,13 @@
+﻿@foreach (var item in ViewBag.Catetories)
+{
+    if (item.subject != null && item.subject.Count > 0)
+    {
+        <ul class="am-nav">
+            @foreach (var sub in item.subject)
+            {
+            <li @(sub.active != null && (bool)sub.active ? "class=am-active" : "")><a href="@sub.url">@sub.name</a></li>
+            }
+        </ul>
+        <hr class="am-article-divider" />
+    }   
+}

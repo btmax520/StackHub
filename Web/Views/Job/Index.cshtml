@@ -1,4 +1,25 @@
-﻿<div class="am-g">
+﻿
+<div id="nav-top" class="am-g">
+    <ul class="am-avg-md-5">
+        <li class="am-active">
+            <a href="index" class="active">简历</a>
+        </li>
+        <li>
+            <a href="index">收藏</a>
+        </li>
+        <li>
+            <a href="index">面试</a>
+        </li>
+        <li>
+            <a href="index">投递</a>
+        </li>
+        <li>
+            <a href="index">设置</a>
+        </li>
+    </ul>
+</div>
+<hr class="am-article-divider" />
+<div class="am-g">
     <div class="am-u-md-10">
         <div class="am-panel am-panel-primary">
             <div class="am-panel-hd">
@@ -9,125 +30,12 @@
                     <option value="2">我目前在职,想看看新的机会</option>
                     <option value="3">我暂时不想找工作</option>
                     <option value="4">我是个学生</option>
-                    <option value="5">我想兼职</option>
                 </select>
-                <button class="am-btn am-btn-primary am-btn-xs" style="float:right;">
+                <button class="am-btn am-btn-primary am-btn-xs">
                     <i class="am-icon-edit"></i>
                 </button>
             </div>
             <div class="am-panel-bd">
-                <div>
-                    <form name="resume:13987142942" class="am-form am-form-horizontal" method="post">
-                        <div class="am-form-group">
-                            <label for="inputName" class="am-u-sm-2 am-form-label">姓名：</label>
-                            <div class="am-u-sm-4">
-                                <input type="text" id="inputName" placeholder="输入你的姓名" name="name" required>
-                            </div>
-                            <label for="inputSex" class="am-u-sm-2 am-form-label">性别：</label>
-                            <div class="am-u-sm-4">
-                                <select data-am-selected name="sex" required>
-                                    <option value="male">男</option>
-                                    <option value="female">女</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="am-form-group">
-                            <label for="inputSchool" class="am-u-sm-2 am-form-label">学校：</label>
-                            <div class="am-u-sm-4">
-                                <input type="text" id="inputSchool" placeholder="输入你必要的学校" name="school">
-                            </div>
-                            <label for="inputEducation" class="am-u-sm-2 am-form-label" onabort="education">学历：</label>
-                            <div class="am-u-sm-4">
-                                <select data-am-selected>
-                                    <option value="A">博士</option>
-                                    <option value="B">硕士</option>
-                                    <option value="C">本科</option>
-                                    <option value="D">大专</option>
-                                    <option value="E">高中</option>
-                                    <option value="F">初中</option>
-                                    <option value="G">小学</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="am-form-group">
-                            <label for="inputBirthday" class="am-u-sm-2 am-form-label">生日：</label>
-                            <div class="am-u-sm-4">
-                                <input type="date" id="inputBirthday" placeholder="输入你的生日" name="birthday" data-am-datepicker required>
-                            </div>
-                            <label for="inputExperience" class="am-u-sm-2 am-form-label">经验：</label>
-                            <div class="am-u-sm-4">
-                                <select data-am-selected name="experience">
-                                    <option value="A">应届毕业生</option>
-                                    <option value="B">实习生</option>
-                                    <option value="1">1年</option>
-                                    <option value="2">2年</option>
-                                    <option value="3">3年</option>
-                                    <option value="4">4年</option>
-                                    <option value="5">5年</option>
-                                    <option value="6">6年</option>
-                                    <option value="7">7年</option>
-                                    <option value="8">8年</option>
-                                    <option value="9">9年</option>
-                                    <option value="10">10年及以上</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="am-form-group">
-                            <label for="inputPhone" class="am-u-sm-2 am-form-label">手机：</label>
-                            <div class="am-u-sm-10">
-                                <input type="tel" id="inputPhone" placeholder="输入你的手机号" name="phone" required>
-                            </div>
-                        </div>
-                        <div class="am-form-group">
-                            <label for="inputEmail" class="am-u-sm-2 am-form-label">邮箱：</label>
-                            <div class="am-u-sm-10">
-                                <input type="email" id="inputEmail" placeholder="输入你的电子邮件" name="email">
-                            </div>
-                        </div>
-                        <div class="am-form-group">
-                            <label for="inputPosition" class="am-u-sm-2 am-form-label">职位：</label>
-                            <div class="am-u-sm-10">
-                                <input type="text" id="inputPosition" placeholder="输入你当前职位" name="position">
-                            </div>
-                        </div>
-                        <div class="am-form-group">
-                            <label for="inputSalary1" class="am-u-sm-2 am-form-label">薪资要求：</label>
-                            <div class="am-u-sm-5">
-                                <input type="number" id="inputSalary1" placeholder="3000" name="salary1" required>
-                            </div>
-                            <div class="am-u-sm-5">
-                                <input type="number" id="inputSalary2" placeholder="12000" name="salary1" required>
-                            </div>
-                        </div>
-                        <div class="am-form-group">
-                            <label for="inputWork" class="am-u-sm-2 am-form-label">职位：</label>
-                            <div class="am-u-sm-10">
-                                <input type="text" id="input" placeholder="输入你想找的职位" name="work">
-                            </div>
-                        </div>
-                        <div class="am-form-group">
-                            <label for="inputKind" class="am-u-sm-2 am-form-label">性质：</label>
-                            <div class="am-u-sm-10">
-                                <select data-am-selected>
-                                    <option value="1">全职</option>
-                                    <option value="2">实习</option>
-                                    <option value="3">兼职</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="am-form-group">
-                            <label for="inputArea" class="am-u-sm-2 am-form-label">区域：</label>
-                            <div class="am-u-sm-10">
-                                <input type="text" id="inputArea" placeholder="输入你想找工作的区域" name="area">
-                            </div>
-                        </div>
-                        <div class="am-form-group">
-                            <div class="am-u-sm-10 am-u-sm-offset-2">
-                                <button type="submit" class="am-btn am-btn-default ajax">保存</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
                 <div>
                     <div class="am-badge am-badge-primary am-round am-text-default">活好<a href="#" class=".am-text-xs">&times;</a></div>
                     <span class="am-badge am-badge-primary am-round">身材好</span>

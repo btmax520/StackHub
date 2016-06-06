@@ -1,14 +1,29 @@
-﻿<div class="container">
-    <div class="row" style="vertical-align:bottom">
-        <div class="col-md-3"><a href="~/index.html"><img src="~/img/logo.jpg" class="img-responsive" /></a></div>
-        <div class="col-md-8">
-            <div class="row">
-                <div class="col-md-2"><a href="~/publish/subpackage" role="button" class="btn btn-danger" style="margin-top:15px;width:100%">分包</a></div>
-                <div class="col-md-2"><a href="~/publish/package" role="button" class="btn btn-danger" style="margin-top:15px;width:100%">整包</a></div>
-                <div class="col-md-2"><a href="~/publish/hire" role="button" class="btn btn-danger" style="margin-top:15px;width:100%">招聘</a></div>
-                <div class="col-md-2"><a href="~/publish/job" role="button" class="btn btn-danger" style="margin-top:15px;width:100%">求职</a></div>
-                <div class="col-md-4"><a href="~/publish/subpackage" class="btn btn-info" style="margin-top:15px;width:100%">发布</a></div>
-            </div>
+﻿<div id="top-menu" class="am-g">
+    <div class="am-u-md-3"><a href="/index.html"><img src="/img/logo.jpg" class="am-img-responsive" /></a></div>
+    @foreach (var item in ViewBag.Catetories)
+    {
+        <div class="am-u-md-2">
+            <a href="@item.id" class="am-btn am-btn-primary">@item.name</a>
         </div>
-    </div>
+    }
+    <div class="am-u-md-1"><a href="~/publish/subpackage" class="am-btn am-btn-danger">发布</a></div>
 </div>
+@section SubCategories{
+<ul class="am-nav">
+    @foreach (var item in ViewBag.Catetories)
+    {
+        if (item.subject)
+        {
+            foreach(var sub in item.subject)
+            {
+                <li class="am-active"><a href="@sub.url">@sub.name</a></li>
+            }
+        }
+    }
+    
+    @*<li><a href="#">分割线<span class="am-nav-en">Divider</span></a></li>
+    <li><a href="#">单张图片<span class="am-nav-en">Figure</span></a></li>
+    <li><a href="/widgets/footer">页脚<span class="am-nav-en">Footer</span></a></li>
+    <li><a href="/widgets/gallery">图片画廊<span class="am-nav-en">Gallery</span></a></li>*@
+</ul>
+}

@@ -1,0 +1,76 @@
+﻿<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">用户登录</div>
+                <div class="panel-body">
+                    <div id="loginBox" class="col-md-6">
+                        <form id="loginForm" data-toggle="validator" action="http://localhost:54007/api/login" method="post">
+                            <div class="form-group">
+                                <label for="inputName">用户名</label>
+                                <input type="text" class="form-control" id="inputName" name="name" placeholder="电子邮箱/手机号码" required>
+                                <div class="help-block with-errors">登陆账号可以是邮箱或手机号</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPassword">密码</label>
+                                <input type="password" class="form-control" id="inputPassword" name="password" required>
+                                <div class="help-block with-errors">最少6个字符</div>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="auto">自动登录
+                                </label>
+                            </div>
+                            <button id="loginBtn" type="button" class="btn btn-info btn-block">登陆</button>
+                        </form>
+                    </div>
+                    <div id="registerBox" class="col-md-4">
+                        <h2>没有帐户？</h2>
+                        <p>这里有一段文字啊，很多的文字啊，太多太多的文字了，主要可以介绍介绍注册的好处和公司或者项目概况。。。</p>
+                        <a href="register.html" role="button" class="btn btn-primary">注册</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div id="returnBox" class="alert alert-warning" style="display:none;">
+                <a href="#" class="close" data-dismiss="alert">
+                    &times;
+                </a>
+                <strong id="returnMsg"></strong>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+        $(document).ready(function () {
+            $('#loginBtn').click(function (e) {
+                $('#returnBox').hide();
+                $('#loginForm').validator('validate');
+                if ($('#loginForm .has-error').length > 0)
+                {
+                    return;
+                }
+                //$('#loginForm').submit();
+                //return;
+                var parms = $('#loginForm').serializeArray()
+                $.post(
+                    "http://localhost:54007/api/login",
+                    parms,
+                    function (data) {
+                        if (data.success) {
+                            //window.location.href = "index.html";
+                        }
+                        else {
+                            $('#returnMsg').text(data.messages[0]);
+                            $('#returnBox').show();
+                        }
+
+                    },
+                    "json"
+                )
+            })
+        })
+</script>
