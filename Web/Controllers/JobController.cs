@@ -6,11 +6,12 @@ using System.Web.Mvc;
 
 namespace Web.Controllers
 {
-    public class HomeController : BaseController
+    public class JobController : BaseController
     {
+        // GET: Job
         public ActionResult Index()
         {
-            SetTopActive("hire");
+            SetTopActive("job");
             return View();
         }
     }
