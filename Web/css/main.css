@@ -50,6 +50,14 @@
 #left-nav{
 }
 
+#p-footer {
+    padding: 30px 0 15px;
+    font-size: 1.6rem;
+    background: #555;
+    color: #fff;
+}
+}
+
 #left-nav a {
     padding-left:40px;
     text-align:left;
