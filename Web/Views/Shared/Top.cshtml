@@ -1,6 +1,5 @@
 ﻿<div id="top-menu" class="am-g">
-    <div class="am-u-md-2"><a href="/index.html"><img src="/img/logo.jpg" class="am-img-responsive" /></a></div>
-    
+    <div class="am-u-md-2"><a href="~/"><img src="/img/logo.jpg" class="am-img-responsive" /></a></div>
     @foreach (var item in ViewBag.Catetories)
     {
         <div class="am-u-md-2">
@@ -18,5 +17,28 @@
             }
         </div>
     }
-    <div class="am-u-md-2"><a href="~/publish/@ViewBag.CurrentCategory.id" class="am-btn am-btn-danger">发布 @ViewBag.CurrentCategory.name</a></div>
+    @if (ViewBag.CurrentCategory == null)
+    {
+        <div class="am-u-md-2"><a href="~/publish" class="am-btn am-btn-danger">发布</a></div>
+    }
+    else
+    {
+        <div class="am-u-md-2"><a href="~/publish/@ViewBag.CurrentCategory.id" class="am-btn am-btn-danger">发布 @ViewBag.CurrentCategory.name</a></div>
+    }
+</div>
+<div id="top-menu" class="am-g">
+    <div class="am-u-md-2"><a href="/"><img src="/img/logo.jpg" class="am-img-responsive"></a></div>
+    <div class="am-u-md-2">
+        <a href="subpackage" class="am-btn am-btn-default">任务</a>
+    </div>
+    <div class="am-u-md-2">
+        <a href="project" class="am-btn am-btn-default">项目</a>
+    </div>
+    <div class="am-u-md-2">
+        <a href="/hire" class="am-btn am-btn-default">招聘</a>
+    </div>
+    <div class="am-u-md-2">
+        <a href="/job" class="am-btn am-btn-default">求职</a>
+    </div>
+    <div class="am-u-md-2"><a href="/publish" class="am-btn am-btn-danger">发布</a></div>
 </div>
