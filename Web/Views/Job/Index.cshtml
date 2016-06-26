@@ -1,257 +1,548 @@
-﻿
-<div id="nav-top" class="am-g">
-    <ul class="am-avg-md-5">
-        <li class="am-active">
-            <a href="index" class="active">简历</a>
-        </li>
-        <li>
-            <a href="index">收藏</a>
-        </li>
-        <li>
-            <a href="index">面试</a>
-        </li>
-        <li>
-            <a href="index">投递</a>
-        </li>
-        <li>
-            <a href="index">设置</a>
-        </li>
-    </ul>
-</div>
-<hr class="am-article-divider" />
-<div class="am-g">
-    <div class="am-u-md-10">
-        <div class="am-panel am-panel-primary">
-            <div class="am-panel-hd">
-                <span>高琪</span>
-                <select data-am-selected="{btnWidth: '40%', btnSize: 'sm', btnStyle: 'primary'}" style="color:blue;">
-                    <option value="0" selected="">请选择目前状态</option>
-                    <option value="1">我已离职,可快速到岗</option>
-                    <option value="2">我目前在职,想看看新的机会</option>
-                    <option value="3">我暂时不想找工作</option>
-                    <option value="4">我是个学生</option>
-                </select>
-                <button class="am-btn am-btn-primary am-btn-xs">
-                    <i class="am-icon-edit"></i>
-                </button>
-            </div>
-            <div class="am-panel-bd">
-                <div>
-                    <div class="am-badge am-badge-primary am-round am-text-default">活好<a href="#" class=".am-text-xs">&times;</a></div>
-                    <span class="am-badge am-badge-primary am-round">身材好</span>
-                    <span class="am-badge am-badge-primary am-round">听话</span>
-                    <span class="am-badge am-badge-primary am-round">水多</span>
-                    <div class="am-badge am-badge-primary am-round">活好<a href="#" class=".am-text-xs">&times;</a></div>
-                    <span class="am-badge am-badge-primary am-round">身材好</span>
-                    <span class="am-badge am-badge-primary am-round">听话</span>
-                    <span class="am-badge am-badge-primary am-round">水多</span>
-                    <div class="am-badge am-badge-primary am-round">活好<a href="#" class=".am-text-xs">&times;</a></div>
-                    <span class="am-badge am-badge-primary am-round">身材好</span>
-                    <span class="am-badge am-badge-primary am-round">听话</span>
-                    <span class="am-badge am-badge-primary am-round">水多</span>
-                    <div class="am-badge am-badge-primary am-round">活好<a href="#" class=".am-text-xs">&times;</a></div>
-                    <span class="am-badge am-badge-primary am-round">身材好</span>
-                    <span class="am-badge am-badge-primary am-round">听话</span>
-                    <span class="am-badge am-badge-primary am-round">水多</span>
-                    <div class="am-badge am-badge-primary am-round">活好<a href="#" class=".am-text-xs">&times;</a></div>
-                    <span class="am-badge am-badge-primary am-round">身材好</span>
-                    <span class="am-badge am-badge-primary am-round">听话</span>
-                    <span class="am-badge am-badge-primary am-round">水多</span>
-
-                </div>
-            </div>
-        </div>
+﻿<div class="am-g">
+    <div class="am-u-md-2">
+        <ul class="am-nav">
+            <li class="am-nav-header">个人简历</li>
+            <li class="am-active"><a href="resume">编辑简历</a></li>
+            <li><a href="collection">收藏</a></li>
+            <li><a href="deliver">投递</a></li>
+            <li class="am-nav-divider"></li>
+            <li><a href="setting">个人设置</a></li>
+        </ul>
     </div>
-</div>
-<div class="am-g">
     <div class="am-u-md-10">
-        <div data-am-widget="titlebar" class="am-titlebar am-titlebar-default">
-            <h2 class="am-titlebar-title ">项目经验</h2>
-            <nav class="am-titlebar-nav">
-                <a data-am-collapse="{parent: '#resume'}" href="#input-resume" class="">more &raquo;</a>
-            </nav>
-        </div>
-        <div id="resume" class="am-panel am-panel-default">
-            <div id="input-resume" class="am-panel-collapse am-collapse">
-                <div class="am-panel-bd">
-                    <form class="am-form am-form-horizontal">
-                        <div class="am-form-group">
-                            <label for="doc-ipt-3" class="am-u-sm-2 am-form-label">电子邮件</label>
-                            <div class="am-u-sm-5">
-                                <input type="date" id="doc-ipt-3" placeholder="项目开始日期" data-am-datepicker>
-                            </div>
-                            <div class="am-u-sm-5">
-                                <input type="date" id="doc-ipt-4" placeholder="项目结束日期" data-am-datepicker>
-                            </div>
-                        </div>
-                        <div class="am-form-group">
-                            <label for="doc-ipt-3" class="am-u-sm-2 am-form-label">电子邮件</label>
-                            <div class="am-u-sm-10">
-                                <input type="email" id="doc-ipt-3" placeholder="输入你的电子邮件">
-                            </div>
-                        </div>
-
-                        <div class="am-form-group">
-                            <label for="doc-ipt-pwd-2" class="am-u-sm-2 am-form-label">密码</label>
-                            <div class="am-u-sm-10">
-                                <input type="password" id="doc-ipt-pwd-2" placeholder="设置一个密码吧">
-                            </div>
-                        </div>
-
-                        <div class="am-form-group">
-                            <div class="am-u-sm-offset-2 am-u-sm-10">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"> 记住十万年
-                                    </label>
+        <div class="am-g">
+            <div class="am-u-md-12">
+                <div class="am-panel am-panel-primary">
+                    <div class="am-panel-hd">
+                        <span>高琪</span>
+                        <select data-am-selected="{btnWidth: '40%', btnSize: 'sm', btnStyle: 'primary'}" style="color:blue;">
+                            <option value="0" selected="">请选择目前状态</option>
+                            <option value="1">我已离职,可快速到岗</option>
+                            <option value="2">我目前在职,想看看新的机会</option>
+                            <option value="3">我暂时不想找工作</option>
+                            <option value="4">我是个学生</option>
+                            <option value="5">我想兼职</option>
+                        </select>
+                        <button class="am-btn am-btn-primary am-btn-xs" style="float:right;">
+                            <i class="am-icon-edit"></i>
+                        </button>
+                    </div>
+                    <div class="am-panel-bd">
+                        <div>
+                            <form id="basicForm" name="resume" class="am-form am-form-horizontal" method="post">
+                                <input hidden="hidden" name="id" value="13987142942" />
+                                <div class="am-form-group">
+                                    <label for="inputName" class="am-u-sm-2 am-form-label">姓名：</label>
+                                    <div class="am-u-sm-4">
+                                        <input type="text" id="inputName" placeholder="输入你的姓名" name="name" required value=@ViewBag.Basic.Name>
+                                    </div>
+                                    <label for="inputSex" class="am-u-sm-2 am-form-label">性别：</label>
+                                    <div class="am-u-sm-4">
+                                        <select data-am-selected name="sex" required value=@ViewBag.Basic.Sex>
+                                            <option value="male">男</option>
+                                            <option value="female">女</option>
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
+                                <div class="am-form-group">
+                                    <label for="inputSchool" class="am-u-sm-2 am-form-label">学校：</label>
+                                    <div class="am-u-sm-4">
+                                        <input type="text" id="inputSchool" placeholder="输入你必要的学校" name="school" value=@ViewBag.Basic.School>
+                                    </div>
+                                    <label for="inputEducation" class="am-u-sm-2 am-form-label" onabort="education">学历：</label>
+                                    <div class="am-u-sm-4">
+                                        <select data-am-selected name="education" value=@ViewBag.Basic.Education>
+                                            <option value="A">博士</option>
+                                            <option value="B">硕士</option>
+                                            <option value="C">本科</option>
+                                            <option value="D">大专</option>
+                                            <option value="E">高中</option>
+                                            <option value="F">初中</option>
+                                            <option value="G">小学</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <label for="inputBirthday" class="am-u-sm-2 am-form-label">生日：</label>
+                                    <div class="am-u-sm-4">
+                                        <input type="date" id="inputBirthday" placeholder="输入你的生日" name="birthday" data-am-datepicker required value=@ViewBag.Basic.Birthday>
+                                    </div>
+                                    <label for="inputExperience" class="am-u-sm-2 am-form-label">经验：</label>
+                                    <div class="am-u-sm-4">
+                                        <select data-am-selected name="experience" value=@ViewBag.Basic.Experience>
+                                            <option value="A">应届毕业生</option>
+                                            <option value="B">实习生</option>
+                                            <option value="1">1年</option>
+                                            <option value="2">2年</option>
+                                            <option value="3">3年</option>
+                                            <option value="4">4年</option>
+                                            <option value="5">5年</option>
+                                            <option value="6">6年</option>
+                                            <option value="7">7年</option>
+                                            <option value="8">8年</option>
+                                            <option value="9">9年</option>
+                                            <option value="10">10年及以上</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <label for="inputPhone" class="am-u-sm-2 am-form-label">手机：</label>
+                                    <div class="am-u-sm-10">
+                                        <input type="tel" id="inputPhone" placeholder="输入你的手机号" name="phone" required value=@ViewBag.Basic.Phone>
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <label for="inputEmail" class="am-u-sm-2 am-form-label">邮箱：</label>
+                                    <div class="am-u-sm-10">
+                                        <input type="email" id="inputEmail" placeholder="输入你的电子邮件" name="email" value=@ViewBag.Basic.Email>
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <label for="inputPosition" class="am-u-sm-2 am-form-label">职位：</label>
+                                    <div class="am-u-sm-10">
+                                        <input type="text" id="inputPosition" placeholder="输入你当前职位" name="position" value=@ViewBag.Basic.Position>
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <label for="inputSalary1" class="am-u-sm-2 am-form-label">薪资要求：</label>
+                                    <div class="am-u-sm-5">
+                                        <input type="number" id="inputSalary1" placeholder="3000" name="salary1" required  value=@ViewBag.Basic.Salary1>
+                                    </div>
+                                    <div class="am-u-sm-5">
+                                        <input type="number" id="inputSalary2" placeholder="12000" name="salary2" required  value=@ViewBag.Basic.Salary2>
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <label for="inputWork" class="am-u-sm-2 am-form-label">职位：</label>
+                                    <div class="am-u-sm-10">
+                                        <input type="text" id="input" placeholder="输入你想找的职位" name="work" value=@ViewBag.Basic.Work>
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <label for="inputKind" class="am-u-sm-2 am-form-label">性质：</label>
+                                    <div class="am-u-sm-10">
+                                        <select data-am-selected name="kind" value=@ViewBag.Basic.Kind>
+                                            <option value="1">全职</option>
+                                            <option value="2">实习</option>
+                                            <option value="3" selected>兼职</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <label for="inputArea" class="am-u-sm-2 am-form-label">区域：</label>
+                                    <div class="am-u-sm-10">
+                                        <select multiple data-am-selected="{btnWidth: '90%'}" name="area" value=@ViewBag.Basic.Area>
+                                            <option value="a">Apple</option>
+                                            <option value="b" selected>Banana</option>
+                                            <option value="o" selected>Orange</option>
+                                            <option value="m">Mango</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <label for="inputTag" class="am-u-sm-2 am-form-label"></label>
+                                    <div class="am-u-sm-10">
+                                        @*<div>
+                                            <div class="am-badge am-badge-primary am-round am-text-default">学习能力强<a href="#" class=".am-text-xs">&times;</a></div>
+                                            <div class="am-badge am-badge-primary am-round am-text-default">接受出差<a href="#" class=".am-text-xs">&times;</a></div>
+                                            <div class="am-badge am-badge-primary am-round am-text-default">热爱生活<a href="#" class=".am-text-xs">&times;</a></div>
+                                            <div class="am-badge am-badge-primary am-round am-text-default">服从管理<a href="#" class=".am-text-xs">&times;</a></div>
+                                            <div class="am-badge am-badge-primary am-round am-text-default">吃苦耐劳<a href="#" class=".am-text-xs">&times;</a></div>
+                                            <div class="am-badge am-badge-primary am-round am-text-default">踏实能干<a href="#" class=".am-text-xs">&times;</a></div>
+                                            <div class="am-badge am-badge-primary am-round am-text-default">加班狂人<a href="#" class=".am-text-xs">&times;</a></div>
+                                            <div class="am-badge am-badge-primary am-round am-text-default">业务能手<a href="#" class=".am-text-xs">&times;</a></div>
+                                            <div class="am-badge am-badge-primary am-round am-text-default">千杯不倒<a href="#" class=".am-text-xs">&times;</a></div>
+                                        </div>*@
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <div class="am-u-sm-10 am-u-sm-offset-2">
+                                        <button id="basic" class="am-btn am-btn-primary">保存</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <hr class="am-article-divider" />
                         </div>
-
-                        <div class="am-form-group">
-                            <div class="am-u-sm-10 am-u-sm-offset-2">
-                                <button type="submit" class="am-btn am-btn-default">提交登入</button>
-                            </div>
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <div data-am-widget="list_news" class="am-list-news am-list-news-default">
-            <div class="am-list-news-bd">
-                <ul class="am-list">
-                    <li class="am-list-item-desced">
-                        <div class="am-list-item-hd">
-                            <h4>
-                                <span>2004.1—2016.12</span>
-                                <span class="am-text-success">昆明铁路物流集团</span>
-                                <button class="am-btn am-btn-default am-btn-xs">
-                                    <i class="am-icon-edit"></i>
-                                </button>
-                                <button class="am-btn am-btn-default am-btn-xs">
-                                    <i class="am-icon-remove"></i>
-                                </button>
-                            </h4>
+        <div class="am-g">
+            <div class="am-u-md-12">
+                <div data-am-widget="titlebar" class="am-titlebar am-titlebar-default">
+                    <h2 class="am-titlebar-title ">项目经验</h2>
+                    <nav class="am-titlebar-nav">
+                        <a data-am-collapse="{parent: '#project'}" href="#input-project"><i class="am-icon-plus"></i></a>
+                    </nav>
+                </div>
+                <div id="project" class="am-panel am-panel-default">
+                    <div id="input-project" class="am-panel-collapse am-collapse">
+                        <div class="am-panel-bd">
+                            <form id="projectForm" class="am-form am-form-horizontal">
+                                <div>
+                                    <input type="hidden" name="id" value=@ViewBag.Project.ID>
+                                </div>
+                                <div class="am-form-group">
+                                    <label for="d1" class="am-u-sm-2 am-form-label">项目时间：</label>
+                                    <div class="am-u-sm-5">
+                                        <input type="date" id="d1" name="begin" value=@ViewBag.Project.Begin placeholder="项目开始日期" data-am-datepicker>
+                                    </div>
+                                    <div class="am-u-sm-5">
+                                        <input type="date" id="d2" name="end" value=@ViewBag.Project.End placeholder="项目结束日期" data-am-datepicker>
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <label for="d3" class="am-u-sm-2 am-form-label">公司名称：</label>
+                                    <div class="am-u-sm-10">
+                                        <input type="text" id="d3" name="company" value=@ViewBag.Project.Company placeholder="输入公司名称">
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <label for="d4" class="am-u-sm-2 am-form-label">项目名称：</label>
+                                    <div class="am-u-sm-10">
+                                        <input type="text" id="d4" name="name" value=@ViewBag.Project.Name placeholder="输入项目名称">
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <label for="d5" class="am-u-sm-2 am-form-label">担任职位：</label>
+                                    <div class="am-u-sm-10">
+                                        <select id="d5" data-am-selected="{btnWidth: '40%', btnSize: 'sm', btnStyle: 'default'}" name="Position" value=@ViewBag.Project.Position>
+                                            <option value="项目经理">项目经理</option>
+                                            <option value="产品经理">产品经理</option>
+                                            <option value="全职">全职</option>
+                                            <option value="实习">实习</option>
+                                            <option value="打杂">打杂</option>
+                                            <option value="兼职">兼职</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <label for="d6" class="am-u-sm-2 am-form-label">项目描述：</label>
+                                    <div class="am-u-sm-10">
+                                        <textarea class="" rows="3" id="d6" name="descript">@ViewBag.Project.Descript</textarea>
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <div class="am-u-sm-10 am-u-sm-offset-2">
+                                        <button id="addProject" class="am-btn am-btn-default">保存</button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
+                    </div>
+                </div>
+                <div data-am-widget="list_news" class="am-list-news am-list-news-default">
+                    <div class="am-list-news-bd">
+                        <ul class="am-list">
+                        @foreach (var project in @ViewBag.Projects)
+                        {
+                            <li id=@project.ID class="am-list-item-desced">
+                                <div class="am-list-item-hd">
+                                    <h4>
+                                        <span>@project.Begin — @project.End</span>
+                                        <span class="am-text-success">@project.Company</span>
+                                        <button class="am-btn am-btn-default am-btn-xs" style="float:right;">
+                                            <i class="am-icon-remove remove-project" project=@project.ID ></i>
+                                        </button>
+                                        <button class="am-btn am-btn-default am-btn-xs" style="float:right;">
+                                            <i class="am-icon-edit"></i>
+                                        </button>
+                                    </h4>
+                                </div>
+                                <div class="am-list-item-text">
+                                    <p>
+                                        <span>@project.Position</span>
+                                        <span>@project.Name</span>
+                                        <span>@project.Descript</span>
+                                    </p>
+                                </div>
+                            </li>
+                        }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="am-g">
+            <div class="am-u-md-12">
+                <div data-am-widget="titlebar" class="am-titlebar am-titlebar-default">
+                    <h2 class="am-titlebar-title ">工作经验</h2>
+                    <nav class="am-titlebar-nav">
+                        <a data-am-collapse="{parent: '#work'}" href="#input-work"><i class="am-icon-plus"></i></a>
+                    </nav>
+                </div>
+                <div id="work" class="am-panel am-panel-default">
+                    <div id="input-work" class="am-panel-collapse am-collapse">
+                        <div class="am-panel-bd">
+                            <form id="workForm" class="am-form am-form-horizontal">
+                                <div class="am-form-group">
+                                    <label for="e1" class="am-u-sm-2 am-form-label">工作时间：</label>
+                                    <div class="am-u-sm-5">
+                                        <input type="date" id="e1" placeholder="开始日期" data-am-datepicker>
+                                    </div>
+                                    <div class="am-u-sm-5">
+                                        <input type="date" id="e2" placeholder="结束日期" data-am-datepicker>
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <label for="e3" class="am-u-sm-2 am-form-label">公司名称：</label>
+                                    <div class="am-u-sm-10">
+                                        <input type="text" id="e3" placeholder="输入公司名称">
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <label for="e4" class="am-u-sm-2 am-form-label">担任职位：</label>
+                                    <div class="am-u-sm-10">
+                                        <input type="text" id="e4" placeholder="输入担任职位">
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <label for="e5" class="am-u-sm-2 am-form-label">工作描述：</label>
+                                    <div class="am-u-sm-10">
+                                        <textarea class="" rows="3" id="e5"></textarea>
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <div class="am-u-sm-10 am-u-sm-offset-2">
+                                        <button type="submit" class="am-btn am-btn-default">保存</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div data-am-widget="list_news" class="am-list-news am-list-news-default">
+                    <div class="am-list-news-bd">
+                        <ul class="am-list">
+                            <li class="am-list-item-desced">
+                                <div class="am-list-item-hd">
+                                    <h4>
+                                        <span>2004.1—2016.12</span>
+                                        <span class="am-text-success">昆明能源投资有限公司</span>
+                                        <button class="am-btn am-btn-default am-btn-xs" style="float:right;">
+                                            <i class="am-icon-remove"></i>
+                                        </button>
+                                        <button class="am-btn am-btn-default am-btn-xs" style="float:right;">
+                                            <i class="am-icon-edit"></i>
+                                        </button>
+                                    </h4>
+                                </div>
+                                <div class="am-list-item-text">
+                                    <p>
+                                        开发工程师
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="am-g">
+            <div class="am-u-md-12">
+                <div data-am-widget="titlebar" class="am-titlebar am-titlebar-default">
+                    <h2 class="am-titlebar-title ">教育经历</h2>
+                    <nav class="am-titlebar-nav">
+                        <a data-am-collapse="{parent: '#edu'}" href="#input-edu"><i class="am-icon-plus"></i></a>
+                    </nav>
+                </div>
+                <div id="edu" class="am-panel am-panel-default">
+                    <div id="input-edu" class="am-panel-collapse am-collapse">
+                        <div class="am-panel-bd">
+                            <form class="am-form am-form-horizontal">
+                                <div class="am-form-group">
+                                    <label for="f1" class="am-u-sm-2 am-form-label">学校名称：</label>
+                                    <div class="am-u-sm-10">
+                                        <input type="text" id="f1" placeholder="输入学校名称">
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <label for="f2" class="am-u-sm-2 am-form-label">专业名称：</label>
+                                    <div class="am-u-sm-10">
+                                        <input type="text" id="f2" placeholder="输入专业名称">
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <label for="f3" class="am-u-sm-2 am-form-label">毕业时间：</label>
+                                    <div class="am-u-sm-10">
+                                        <input type="date" id="f3" placeholder="输入毕业日期" name="f3" data-am-datepicker>
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <label for="d5" class="am-u-sm-2 am-form-label">学历：</label>
+                                    <div class="am-u-sm-10">
+                                        <select data-am-selected="{btnWidth: '40%', btnSize: 'sm', btnStyle: 'default'}">
+                                            <option value="0" selected="">本科</option>
+                                            <option value="1">大专</option>
+                                            <option value="2">硕士</option>
+                                            <option value="3">博士</option>
+                                            <option value="4">其他</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <div class="am-u-sm-10 am-u-sm-offset-2">
+                                        <button type="submit" class="am-btn am-btn-default">保存</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div data-am-widget="list_news" class="am-list-news am-list-news-default">
+                    <div class="am-list-news-bd">
+                        <ul class="am-list">
+                            <li class="am-list-item-desced">
+                                <div class="am-list-item-hd">
+                                    <h4>
+                                        <span>2008.7—2004.7</span>
+                                        <span class="am-text-success">昆明理工大学</span>
+                                        <button class="am-btn am-btn-default am-btn-xs" style="float:right;">
+                                            <i class="am-icon-remove"></i>
+                                        </button>
+                                        <button class="am-btn am-btn-default am-btn-xs" style="float:right;">
+                                            <i class="am-icon-edit"></i>
+                                        </button>
+                                    </h4>
+                                </div>
+                                <div class="am-list-item-text">
+                                    <p>
+                                        计算机科学 [ 本科 ]
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="am-g">
+            <div class="am-u-md-12">
+                <div data-am-widget="titlebar" class="am-titlebar am-titlebar-default">
+                    <h2 class="am-titlebar-title ">专业技能</h2>
+                    <nav class="am-titlebar-nav">
+                        <a data-am-collapse="{parent: '#skill'}" href="#input-skill"><i class="am-icon-plus"></i></a>
+                    </nav>
+                </div>
+                <div id="skill" class="am-panel am-panel-default">
+                    <div id="input-skill" class="am-panel-collapse am-collapse">
+                        <div class="am-panel-bd">
+                            <form class="am-form am-form-horizontal">
+                                <div class="am-form-group">
+                                    <label for="d3" class="am-u-sm-2 am-form-label">公司名称：</label>
+                                    <div class="am-u-sm-10">
+                                        <input type="text" id="d3" placeholder="输入公司名称">
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <div class="am-u-sm-10 am-u-sm-offset-2">
+                                        <button type="submit" class="am-btn am-btn-default">保存</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div data-am-widget="list_news" class="am-list-news am-list-news-default">
+                    <div class="am-list-news-bd">
+                        <ul class="am-list">
+                            <li class="am-list-item-desced">
+                                <div class="am-list-item-hd">
+                                    <div>
+                                        <span>计算机级</span>
+                                        <span class="am-text-success">5级别</span>
+                                        <button class="am-btn am-btn-default am-btn-xs" style="float:right;">
+                                            <i class="am-icon-remove"></i>
+                                        </button>
+                                        <button class="am-btn am-btn-default am-btn-xs" style="float:right;">
+                                            <i class="am-icon-edit"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="am-g">
+            <div class="am-u-md-12">
+                <div data-am-widget="titlebar" class="am-titlebar am-titlebar-default">
+                    <h2 class="am-titlebar-title ">自我介绍</h2>
+                    <nav class="am-titlebar-nav">
+                        <a data-am-collapse="{parent: '#desc'}" href="#input-desc"><i class="am-icon-plus"></i></a>
+                    </nav>
+                </div>
+                <div id="desc" class="am-panel am-panel-default">
+                    <div id="input-desc" class="am-panel-collapse am-collapse">
+                        <div class="am-panel-bd">
+                            <form class="am-form am-form-horizontal">
+                                <div class="am-form-group">
+                                    <label for="e5" class="am-u-sm-2 am-form-label">自我描述：</label>
+                                    <div class="am-u-sm-10">
+                                        <textarea class="" rows="3" id="e5"></textarea>
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <div class="am-u-sm-10 am-u-sm-offset-2">
+                                        <button type="submit" class="am-btn am-btn-default">保存</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div data-am-widget="list_news" class="am-list-news am-list-news-default">
+                    <div class="am-list-news-bd">
                         <div class="am-list-item-text">
-                            <p>
-                                仓库管理系统 [ 开发工程师 ]
-                                相关技术： asp.net
-                                库存管理开发、分货、盘整、捡货
-                            </p>
+                            <p>4年java ee 开发经验，精通S2JH开源框架，熟悉SSH框架。 熟悉nginx,solr的应用与配置。 熟悉JFinal开源框架，应用JFinal-Weixin 开发微信语音助手功能。 1年 linux使用经验。熟悉vim，linux下的相关命令 熟悉Eclipse ， Intelli IDEA&nbsp; 熟悉SVN，GIT等版本控制工具</p>
                         </div>
-                    </li>
-                    <li class="am-g am-list-item-desced">
-                        <a href="http://www.douban.com/online/11624755/" class="am-list-item-hd ">我最喜欢的一张画</a>
-
-
-                        <div class="am-list-item-text">你最喜欢的艺术作品，告诉大家它们的------名图画，色彩，交织，撞色，线条雕塑装置当代古代现代作品的照片美我最喜欢的画群296795413进群发画，少说多发图，</div>
-
-                    </li>
-                    <li class="am-g">
-                        <a href="http://www.douban.com/online/11645411/" class="am-list-item-hd ">“你的旅行，是什么颜色？” 晒照片，换北欧梦幻极光之旅！</a>
-
-
-
-                    </li>
-                </ul>
-            </div>
-
-        </div>
-    </div>
-</div>
-<div class="am-g">
-    <div class="am-u-md-10">
-        <div data-am-widget="titlebar" class="am-titlebar am-titlebar-default">
-            <h2 class="am-titlebar-title ">工作经验</h2>
-            <nav class="am-titlebar-nav">
-                <a data-am-collapse="{parent: '#work'}" href="#input-work" class="">more &raquo;</a>
-            </nav>
-        </div>
-        <div id="work" class="am-panel am-panel-default">
-            <div id="input-work" class="am-panel-collapse am-collapse">
-                <div class="am-panel-bd">
-                    <form class="am-form am-form-horizontal">
-                        <div class="am-form-group">
-                            <label for="doc-ipt-3" class="am-u-sm-2 am-form-label">电子邮件</label>
-                            <div class="am-u-sm-5">
-                                <input type="date" id="doc-ipt-3" placeholder="项目开始日期" data-am-datepicker>
-                            </div>
-                            <div class="am-u-sm-5">
-                                <input type="date" id="doc-ipt-4" placeholder="项目结束日期" data-am-datepicker>
-                            </div>
-                        </div>
-                        <div class="am-form-group">
-                            <label for="doc-ipt-3" class="am-u-sm-2 am-form-label">电子邮件</label>
-                            <div class="am-u-sm-10">
-                                <input type="email" id="doc-ipt-3" placeholder="输入你的电子邮件">
-                            </div>
-                        </div>
-
-                        <div class="am-form-group">
-                            <label for="doc-ipt-pwd-2" class="am-u-sm-2 am-form-label">密码</label>
-                            <div class="am-u-sm-10">
-                                <input type="password" id="doc-ipt-pwd-2" placeholder="设置一个密码吧">
-                            </div>
-                        </div>
-
-                        <div class="am-form-group">
-                            <div class="am-u-sm-offset-2 am-u-sm-10">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"> 记住十万年
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="am-form-group">
-                            <div class="am-u-sm-10 am-u-sm-offset-2">
-                                <button type="submit" class="am-btn am-btn-default">提交登入</button>
-                            </div>
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <div data-am-widget="list_news" class="am-list-news am-list-news-default">
-            <!--列表标题-->
-            <div class="am-list-news-hd am-cf">
-                <!--带更多链接-->
-                <a href="###" class="">
-                    <h2>栏目标题</h2>
-                    <span class="am-list-news-more am-fr">更多 &raquo;</span>
-                </a>
-            </div>
-
-            <div class="am-list-news-bd">
-                <ul class="am-list">
-
-                    <li class="am-g am-list-item-desced">
-                        <a href="http://www.douban.com/online/11614662/" class="am-list-item-hd ">我很囧，你保重....晒晒旅行中的那些囧！</a>
-
-
-                        <div class="am-list-item-text">囧人囧事囧照，人在囧途，越囧越萌。标记《带你出发，陪我回家》http://book.douban.com/subject/25711202/为“想读”“在读”或“读过”，有机会获得此书本活动进行3个月，每月送出三本书。会有不定期bonus！</div>
-
-                    </li>
-                    <li class="am-g am-list-item-desced">
-                        <a href="http://www.douban.com/online/11624755/" class="am-list-item-hd ">我最喜欢的一张画</a>
-
-
-                        <div class="am-list-item-text">你最喜欢的艺术作品，告诉大家它们的------名图画，色彩，交织，撞色，线条雕塑装置当代古代现代作品的照片美我最喜欢的画群296795413进群发画，少说多发图，</div>
-
-                    </li>
-                    <li class="am-g">
-                        <a href="http://www.douban.com/online/11645411/" class="am-list-item-hd ">“你的旅行，是什么颜色？” 晒照片，换北欧梦幻极光之旅！</a>
-
-
-
-                    </li>
-                </ul>
-            </div>
-
-        </div>
     </div>
+    <script>
+        var resume = @RenderPage("~/Views/Shared/RawJson.cshtml")
+        $(document).ready(function () {
+            $('#basic').click(function (e) {
+                alert('hi');
+                var parms = $('#basicForm').serializeArray()
+                $.post(
+                    "/job/basic",
+                    parms,
+                    function (data) {
+                        alert(JSON.stringify(data));
+                    },
+                    "json"
+                )
+                return false;
+            })
+            $('#addProject').click(function (e) {
+                var parms = $('#projectForm').serializeArray()
+                $.post(
+                    "/job/addproject",
+                    parms,
+                    function (data) {
+                        alert(JSON.stringify(data));
+                    },
+                    "json"
+                )
+                return false;
+            })
+            $('.remove-project').click(function (e) {
+                var id = $(this).attr("project")
+                $.post(
+                    "/job/removeproject",
+                    { id: id },
+                    function (data) {
+                        $('#' + id).remove();
+                    },
+                    "json"
+                )
+                return false;
+            })
+        })
+    </script>
+
 </div>
