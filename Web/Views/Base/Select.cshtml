@@ -1,0 +1,7 @@
+﻿<select @Html.Raw(ViewBag.Setting)>
+@foreach (Web.Models.UIOption option in ViewBag.Options)
+{
+    <option value="@option.Key" @option.Selected>@option.Value</option>
+}
+</select>
+

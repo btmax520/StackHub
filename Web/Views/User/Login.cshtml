@@ -1,76 +1,85 @@
-﻿<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">用户登录</div>
-                <div class="panel-body">
-                    <div id="loginBox" class="col-md-6">
-                        <form id="loginForm" data-toggle="validator" action="http://localhost:54007/api/login" method="post">
-                            <div class="form-group">
-                                <label for="inputName">用户名</label>
-                                <input type="text" class="form-control" id="inputName" name="name" placeholder="电子邮箱/手机号码" required>
-                                <div class="help-block with-errors">登陆账号可以是邮箱或手机号</div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputPassword">密码</label>
-                                <input type="password" class="form-control" id="inputPassword" name="password" required>
-                                <div class="help-block with-errors">最少6个字符</div>
-                            </div>
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="auto">自动登录
-                                </label>
-                            </div>
-                            <button id="loginBtn" type="button" class="btn btn-info btn-block">登陆</button>
-                        </form>
-                    </div>
-                    <div id="registerBox" class="col-md-4">
-                        <h2>没有帐户？</h2>
-                        <p>这里有一段文字啊，很多的文字啊，太多太多的文字了，主要可以介绍介绍注册的好处和公司或者项目概况。。。</p>
-                        <a href="register.html" role="button" class="btn btn-primary">注册</a>
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>用户登陆</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="stylesheet" href="/css/amazeui.min.css" />
+    <style>
+        .header {
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 200%;
+            color: #333;
+            margin-top: 30px;
+        }
+
+        .header p {
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="am-g">
+            <div class="am-u-md-8 am-u-md-centered">
+                <h1><img src="/img/logo.jpg" class="am-img-responsive" />会员系统</h1>
+            </div>
+        </div>
+        <hr />
+    </div>
+    <div class="am-g">
+        <div class="am-u-lg-6 am-u-md-8 am-u-md-centered">
+            <div class="am-titlebar am-titlebar-default" style="margin-bottom:20px;">
+                <h2 class="am-titlebar-title ">
+                    用户登陆
+                </h2>
+            </div>
+            <form class="am-form am-form-horizontal" method="post">
+                <div class="am-form-group">
+                    <label for="inputUser" class="am-u-md-2 am-form-label am-text-nowrap">登陆账号：</label>
+                    <div class="am-u-md-10">
+                        <input type="tel" id="inputUser" name="login" value="" placeholder="输入你的手机号码或电子邮件" required>
+                        <div>输入你的手机号码或电子邮件</div>
                     </div>
                 </div>
-            </div>
+                <div class="am-form-group">
+                    <label for="imputPassword" class="am-u-md-2 am-form-label am-text-nowrap">密码：</label>
+                    <div class="am-u-md-10">
+                        <input type="password" id="imputPassword" name="password" value="" placeholder="登陆密码" required>
+                    </div>
+                </div>
+                <div class="am-form-group">
+                    <div class="am-u-md-offset-2 am-u-md-10">
+                        <label for="remember-me">
+                            <input id="remember-me" type="checkbox" name="remember" checked>记住我
+                        </label>
+                    </div>
+                </div>
+                <div class="am-form-group">
+                    <div class="am-u-md-10 am-u-md-offset-2">
+                        <button type="submit" class="am-btn am-btn-primary">登录</button>
+                        <span>
+                            <a href="/user/register" class="am-btn am-btn-link">没有帐号？注册</a>
+                        </span>
+                    </div>
+                </div>
+            </form>
+            @RenderPage("~/Views/Shared/ServerMessages.cshtml")
+            <hr>
+            <p class="">© @DateTime.Now.Year 云南镕诚建设项目管理（集团）有限公司 版权所有　邮箱：<a href="mailto:YNRCJT@163.com">YNRCJT@163.com</a></p>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-6">
-            <div id="returnBox" class="alert alert-warning" style="display:none;">
-                <a href="#" class="close" data-dismiss="alert">
-                    &times;
-                </a>
-                <strong id="returnMsg"></strong>
-            </div>
-        </div>
-    </div>
-</div>
-<script>
-        $(document).ready(function () {
-            $('#loginBtn').click(function (e) {
-                $('#returnBox').hide();
-                $('#loginForm').validator('validate');
-                if ($('#loginForm .has-error').length > 0)
-                {
-                    return;
-                }
-                //$('#loginForm').submit();
-                //return;
-                var parms = $('#loginForm').serializeArray()
-                $.post(
-                    "http://localhost:54007/api/login",
-                    parms,
-                    function (data) {
-                        if (data.success) {
-                            //window.location.href = "index.html";
-                        }
-                        else {
-                            $('#returnMsg').text(data.messages[0]);
-                            $('#returnBox').show();
-                        }
-
-                    },
-                    "json"
-                )
-            })
-        })
-</script>
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/amazeui.min.js"></script>
+</body>
+</html>

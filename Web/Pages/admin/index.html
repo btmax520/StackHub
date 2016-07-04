@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>系统管理</title>
+        <link rel="stylesheet" type="text/css" href="easyui/themes/default/easyui.css">
+        <link rel="stylesheet" type="text/css" href="easyui/themes/icon.css">
+        
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
+        <script type="text/javascript" src="easyui/datagrid-cellediting.js"></script>
+        <script type="text/javascript" src="js/admin.js"></script>
+    </head>
+	<body>
+        <div id="header">
+        </div>
+        <div style="float:left;margin-right:5px;width:20%">
+            <div id="mainMenu" class="easyui-datalist" style="width:100%;">
+            </div>
+        </div>
+        <div id="leftContainer" style="float:left;width:78%">
+            <div id="primaryGrid" title="数据视图" class="easyui-datagrid" style="width:100%;"></div>
+        </div>
+        <script>
+            //$(document).ajaxSend(function () {
+            //    $("#primaryGrid").datagrid("loading");
+            //});
+            $(document).ajaxComplete(function (event, request, settings) {
+                $('#primaryGrid').datagrid('loaded');
+            });
+        </script>
+        <script>
+            var action = {
+                back: function () {
+                    alert('back');
+                },
+                
+                all: [
+                    //{ text: '返回', handler: function () { aciton.back } },
+                    //{ text: '取消', handler: onCancel },
+                    //'-',
+                    { text: '保存', handler: function () { action.save() } },
+                    '-',
+                    { text: '新增行', handler: function () { action.add() } },
+                    { text: '删除行', handler: function () { action.del() } },
+                ],
+                
+            }
+
+            var getUIAction = function (items) {
+                var actions = action.all;
+                return actions;
+            };
+            var getUIColumns = function (uiGrid) {
+                var columns = [[
+                    { field: 'itemid', title: 'Item ID', width: 80 },
+                    { field: 'productname', title: 'Product', width: 120 },
+                    { field: 'listprice', title: 'List Price', width: 80, align: 'right' },
+                    { field: 'unitcost', title: 'Unit Cost', width: 80, align: 'right' },
+                    { field: 'attr1', title: 'Attribute', width: 200 },
+                    { field: 'status', title: 'Status', width: 60, align: 'center' }
+                ]]
+                return columns;
+            }
+        </script>
+        <script>
+            $('#mainMenu').datalist({
+                title: "系统菜单",
+                groupField: "group",
+                valueField:"code",
+                textField:"name",
+                lines:true,
+                data:[
+                    { "name": "数据架构", "code": "schema", "group": "系统管理" },
+                    { "name": "界面设置", "code": "view", "group": "系统管理" },
+                    { "name": "分类设置", "code": "category", "group": "基本设置" },
+                    { "name": "标签设置", "code": "tag", "group": "基本设置" },
+                    { "name": "标签设置", "code": "user", "group": "用户管理" },
+                ],
+                currentIndex : -1,
+                onClickRow: mainCtrl.menuClick
+            });
+            var show_grid1 = function () {
+                $('#leftContainer').empty().append(
+                    '<div id="primaryGrid" title="数据视图" class="easyui-datagrid" style="width:100%;"></div>'
+                );
+                $('#primaryGrid').datagrid({
+                    columns: getUIColumns(),
+                    title: 'system/schema',
+                    //idField:"itemid",
+                    singleSelect: true,
+                    data: [
+                        {}, {}
+                    ],
+                    toolbar: getUIAction(),
+                    //onClickRow: function (index) {
+                    //    //$('#dg').datagrid('selectRow', index);
+                    //},
+
+                }).datagrid('enableCellEditing');
+            }
+            var show_grid2 = function () {
+                $('#leftContainer').empty().append(
+                    '<div id="primaryGrid" title="数据视图" class="easyui-datagrid" style="width:100%;"></div>'
+                );
+                $('#primaryGrid').datagrid({
+                    columns:[[
+                        {field:'code',title:'Code',width:100},
+                        {field:'name',title:'Name',width:100},
+                        {field:'price',title:'Price',width:100,align:'right'}
+                    ]],
+                    title: 'system/tag',
+                    //idField:"itemid",
+                    singleSelect: true,
+                    data: [
+                        {}, {}
+                    ],
+                    toolbar: getUIAction(),
+                    //onClickRow: function (index) {
+                    //    //$('#dg').datagrid('selectRow', index);
+                    //},
+
+                }).datagrid('enableCellEditing');
+            }
+        </script>
+        
+	</body>
+</html>

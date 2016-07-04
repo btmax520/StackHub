@@ -1,9 +1,105 @@
-﻿#top-menu a{
+﻿legend {
+    background-color:#fdefdb;
+    color:#000;
+    line-height:40px;
+    padding-left:40px;
+    padding-top:10px;
+}
+body {
+    font-size:1.8rem;
+}
+.titlebar {
+    height: 45px;
+    font-size: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    background-color: transparent;
+    line-height: 44px;
+}
+.titlebar h2:after {
+    content: "";
+    position: absolute;
+    left: 2px;
+    top: 8px;
+    bottom: 8px;
+    border-left: 3px solid #0e90d2;
+}
+.titlebar h2{
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 1.6rem;
+    position: relative;
+    padding-left: 12px;
+    color: #0e90d2;
+    font-size: 1.8rem;
+    text-align: left;
+    font-weight: bold;
+    text-align:right;
+}
+
+#top-menu a{
     line-height:30px;
     width:100%;
 }
-
-.nav-top {
+.filter {
+    padding-bottom:20px;
+    margin-bottom:20px;
+}
+.filter-item{
+    border-bottom:1px solid #ddd;
+    margin-top:20px;
+}
+.filter-item h4 {
+    width:120px;
+    padding:0.4em 1em;
+}
+.filter-item a {
+    margin-right:5px;
+    margin-bottom:5px;
+}
+.list {
+    padding-top:20px;
+    padding-bottom:20px;
+    margin-bottom:20px;
+}
+.job-item {
+    margin-bottom:20px;
+    padding-top:20px;
+    padding-bottom:10px;
+    border: 1px solid #ddd;
+    font-size:1.8rem;
+    line-height:32px;
+    white-space:nowrap;
+}
+.job-item-title{
+    color:#69b345;
+}
+.job-item-salary {
+    color:#f60;
+}
+.job-area {
+    color:#99CC66
+}
+.job-item-timestamp{
+    color:#ccc
+}
+.tag {
+    background-color:#f7f7f7;
+    color:#666666;
+    padding-left:15px;
+    padding-right:15px;
+    font-size:1.6rem;
+}
+.am-tagsinput {
+    width:100%;
+}
+.am-tagsinput .tag {
+    background-color:#dd514c;
+    color:#fff;
+    padding:0;
+    font-size:1.8rem;
 }
 
 #nav-top div {
@@ -29,41 +125,6 @@
 #nav-top a:hover {
     border-bottom:2px solid #FF5722
 }
-
-.am-selected-list {
-    color:#000;
-}
-
-.tag {
-    color:#fff;
-    background:#808080;
-    padding:6px;
-    border-radius: .25em;
-}
-.am-badge{
-    padding-left:16px;
-}
-.am-badge a:hover {
-    color:#dd514c;
-}
-
-#left-nav{
-}
-
-#p-footer {
-    padding: 30px 0 15px;
-    font-size: 1.6rem;
-    background: #555;
-    color: #fff;
-}
-}
-
-#left-nav a {
-    padding-left:40px;
-    text-align:left;
-}
-#left-nav .active{
-    border:none;
-    color: #e50013;
-    background: #f0eeee;
+.am-selected {
+    width:100%;
 }

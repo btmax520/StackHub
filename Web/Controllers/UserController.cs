@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using Web.Models;
 
 namespace Web.Controllers
@@ -20,72 +21,102 @@ namespace Web.Controllers
         // GET: Login
         public ActionResult Login()
         {
-            ViewBag.ShowLeft = false;
             return View();
         }
 
         [HttpPost]
-        public ActionResult Login(string login ,string password)
+        public ActionResult Login(string login ,string password,string remember)
         {
-            string id = string.Empty;
+            User loginUser = new User();
+            loginUser.Remember = remember.ToLower() == "on";
             if (login.Contains("@"))
             {
-                id = RedisSercice.DB.StringGet("user:email:" + login);
+                loginUser.Email = login;
             }
             else
             {
-                id = RedisSercice.DB.StringGet("user:phone:" + login);
+                loginUser.Phone = login;
             }
-            if (string.IsNullOrEmpty(id))
+            if (string.IsNullOrEmpty(login))
             {
                 return View();
             }
             else
             {
-                string value = RedisSercice.DB.StringGet("user:" + id);
-                var user = JsonConvert.DeserializeObject<UserModel>(value);
-                return Login(user,password);
+                
+                return Login(loginUser,password);
             }
         }
 
-        private ActionResult Login(UserModel user,string password)
+        private ActionResult Login(User user,string password)
         {
             long id = user.ID;
-            var repeat = RedisSercice.DB.StringIncrement("login:repeat:" + id);
-            if (repeat > 5)
+            List<string> messages = new List<string>();
+            ViewBag.Messages = messages;
+            using (var db = new DataBaseContext())
             {
-                ViewBag.Success = false;
-                ViewBag.Messages = new List<string>()
+                User checkUser = null;
+                if(string.IsNullOrEmpty(user.Phone))
+                    checkUser = db.User.SingleOrDefault(u => u.Email == user.Email);
+                else
+                    checkUser = db.User.SingleOrDefault(u => u.Phone == user.Phone);
+
+                if (checkUser == null)
                 {
-                    "错误密码次数已经超过5次"
-                };
-                return View();
-            }
-            if (user.Password != password)
-            {
-                ViewBag.Success = false;
-                ViewBag.Messages = new List<string>()
+                    ViewBag.Success = false;
+                    messages.Add("用户不存在");
+                    return View();
+                }
+                else
                 {
-                    string.Format("密码不正确，还可以尝试{0}次", 5 - repeat)
-                };
-                return View();
+                    if (checkUser.Repeat > 5)
+                    {
+                        ViewBag.Success = false;
+                        messages.Add("错误密码次数已经超过5次");
+                        return View();
+                    }
+                    if (checkUser.Password != password)
+                    {
+                        ViewBag.Success = false;
+                        messages.Add(string.Format("密码不正确，还可以尝试{0}次", 5 - checkUser.Repeat));
+                        checkUser.Repeat++;
+                        db.SaveChanges();
+                        return View();
+                    }
+                    else
+                    {
+                        string token = Convert.ToBase64String(Guid.NewGuid().ToByteArray()).TrimEnd('=');
+                        checkUser.Token = token;
+                        checkUser.Repeat = 0;
+                        var result = db.SaveChanges();
+                        bool success = result > 0;
+                        if (success)
+                        {
+                            FormsAuthentication.SetAuthCookie(checkUser.Email, false);
+                            ViewBag.Success = true;
+                            messages.Add("登录成功");
+                            //var cookie = new HttpCookie("token", token);
+                            //cookie.Expires = DateTime.Now.AddDays(7);
+                            //cookie.Path = "/";
+                            ////cookie.Secure = true;
+                            //Response.Cookies.Add(cookie);
+                            string returnUrl = Request.Params["ReturnUrl"];
+                            if (string.IsNullOrEmpty(returnUrl))
+                                return Redirect("~/");
+                            else
+                                return Redirect(returnUrl);
+                        }
+                    }
+                }
             }
-            else
-            {
-                RedisSercice.DB.StringGetSet("login:repeat:" + id, 0);
-            }
-            string token = Convert.ToBase64String(Guid.NewGuid().ToByteArray()).TrimEnd('=');
-            var oldToken = RedisSercice.DB.StringGetSet("online:" + id, token);
-            RedisSercice.DB.KeyDelete("token:" + oldToken);
-            RedisSercice.DB.StringSet("token:" + token, id);
+            return View();
             
-            ViewBag.Success = true;
-            var cookie = new HttpCookie("token", token);
-            cookie.Expires = DateTime.Now.AddDays(7);
-            cookie.Path = "/";
-            //cookie.Secure = true;
-            Response.Cookies.Add(cookie);
-            return Redirect("~/");
+        }
+
+        public ActionResult Logout(string returnUrl)
+        {
+            FormsAuthentication.SignOut();
+            return Redirect(returnUrl ?? Url.Action("Index", "Home"));
         }
 
         // GET: Register
@@ -95,7 +126,7 @@ namespace Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Register(UserModel user)
+        public ActionResult Register(User user)
         {
             List<string> messages = new List<string>();
             if (string.IsNullOrEmpty(user.Phone))
@@ -114,38 +145,35 @@ namespace Web.Controllers
             {
                 messages.Add("密码不能为空");
             }
-            if (RedisSercice.DB.KeyExists(string.Format("user:phone:{0}", user.Phone)))
+
+            using (var db = new DataBaseContext())
             {
-                messages.Add("相同电话号码已经注册");
-            }
-            if (RedisSercice.DB.KeyExists(string.Format("user:email:{0}", user.Email)))
-            {
-                messages.Add("相同电子邮箱已经注册");
+                var checkUser = db.User.SingleOrDefault(u => u.Phone == user.Phone || u.Email == user.Email);
+                if (checkUser != null)
+                {
+                    messages.Add("相同电话号码或电子邮箱已经注册");
+                }
+                else
+                {
+                    db.User.Add(user);
+                    var result = db.SaveChanges();
+                    bool success = true;
+                    if (success)
+                    {
+                        ViewBag.Success = true;
+                        messages.Add("用户注册成功");
+                    }
+                    ViewBag.Messages = messages;
+                    return Login(user, user.Password);
+                }
             }
             if (messages.Count > 0)
             {
                 ViewBag.Success = false;
                 ViewBag.Messages = messages;
-                return View();
             }
+            return View();
 
-            user.ID = RedisSercice.GetSequence();
-            string value = JsonConvert.SerializeObject(user);
-            
-            var tran = RedisSercice.DB.CreateTransaction();
-
-            tran.StringSetAsync(string.Format("user:{0}", user.ID), value);
-            tran.StringSetAsync(string.Format("user:email:{0}", user.Email),user.ID);
-            tran.StringSetAsync(string.Format("user:phone:{0}", user.Phone), user.ID);
-
-            bool success = tran.Execute();
-            if (success)
-            {
-                ViewBag.Success = true;
-                messages.Add("用户注册成功");
-            }
-            ViewBag.Messages = messages;
-            return Login(user, user.Password);
         }
 
 

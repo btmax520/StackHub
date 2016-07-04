@@ -18,6 +18,12 @@ namespace Web
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+                name: "FormPost",
+                url: "{controller}/Post/{data}",
+                defaults: new { controller = "Form", action = "Post", data = UrlParameter.Optional }
+            );
         }
     }
 }

@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Basic Accordion - jQuery EasyUI Demo</title>
+        <link rel="stylesheet" type="text/css" href="/admin/easyui/themes/material/easyui.css">
+        <link rel="stylesheet" type="text/css" href="/admin/easyui/themes/icon.css">
+        <link rel="stylesheet" type="text/css" href="/admin/css/main.css">
+        <script type="text/javascript" src="/admin/js/jquery.min.js"></script>
+        <script type="text/javascript" src="/admin/js/tmpl.min.js"></script>
+        <script type="text/javascript" src="/admin/js/main.js"></script>
+        <script type="text/javascript" src="/admin/easyui/jquery.easyui.min.js"></script>
+    </head>
+	<body>
+        <div style="float:left;">
+            <div class="easyui-accordion" style="width:200px;">
+                <div title="基本设置" data-options="selected:true" style="padding:5px;">
+                    <ul class="easyui-datalist" lines="true" style="width:190px;">
+                        <li value="Catelog">分类设置</li>
+                        <li value="MetaData">数据字典</li>
+                        <li value="User"><a href="#">用户设置</a></li>
+                    </ul>
+                </div>
+                <div title="系统设置" style="padding:10px">
+                    <p>Content1</p>
+                </div>
+                <div title="测试" style="padding:10px">
+                    <p>Content2</p>
+                </div>
+
+            </div>
+        </div>
+        <div style="width:320px;height:800px;background-color:aqua;float:left;margin-left:5px;">
+            <div id="result"></div>
+        </div>
+        <table class="easyui-datagrid" data-options="singleSelect:true">
+            <thead>
+                <tr>
+                    <th data-options="field:'index'">字段索引</th>
+                    <th data-options="field:'code'">字段编码</th>
+                    <th data-options="field:'name'">字段名称</th>
+                    <th data-options="field:'group'">字段分组</th>
+                    <th data-options="field:'prop'">字段属性</th>
+                    <th data-options="field:'type'">基本类型</th>
+                    <th data-options="field:'lenght'">字段长度</th>
+                    <th data-options="field:'decimal'">字段小数</th>
+                    <th data-options="field:'descript'">字段描述</th>
+                    <th data-options="field:'text'">显示名称</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td>001</td>
+                    <td>name1</td>
+                    <td>2323</td>
+                    <td>
+                        <input class="easyui-combobox"
+                               name="language"
+                               data-options="
+                               url:'combobox_data1.json',
+                               method:'get',
+                               valueField:'id',
+                               textField:'text',
+                               panelHeight:'auto'
+                               ">
+                    </td>
+                    <td>001</td>
+                    <td>name1</td>
+                    <td>2323</td>
+                    <td></td>
+                    <td>001</td>
+                </tr>
+                <tr>
+                    <td>002</td>
+                    <td>name2</td>
+                    <td>4612</td>
+                    <td>002</td>
+                    <td>name2</td>
+                    <td>4612</td>
+                    <td>002</td>
+                    <td>name2</td>
+                    <td>4612</td>
+                    <td>002</td>
+                </tr>
+            </tbody>
+        </table>
+        <div id="find_window" class="easyui-window" title="查找" data-options="modal:true,closed:true,iconCls:'icon-search'" style="width:500px;height:200px;padding:10px;">
+            <input class="easyui-datebox"></input>
+        </div>
+<script type="text/x-tmpl" id="tmpl-toolbar">
+    <div style="margin-bottom:4px;">
+        <div class="easyui-panel" style="padding:5px;border:1px solid groove;">
+            {% for (var i=0; i < o.length; i++) { %}
+            <a id="find" href="#" class="easyui-linkbutton" data-options="toggle:true,group:'g2',plain:true">{%=o[i].text%}</a>
+            {% } %}
+        </div>
+    </div>
+</script>
+<script type="text/x-tmpl" id="tmpl-data">
+{
+    "title": "JavaScript Templates",
+    "license": {
+        "name": "MIT license",
+        "url": "http://www.opensource.org/licenses/MIT"
+    },
+    "features": [
+        "lightweight & fast",
+        "powerful",
+        "zero dependencies"
+    ]
+}
+</script>
+<script type="text/x-tmpl" id="tmpl-error">
+<h3 class="error">{%=o.title%}</h3>
+<code>{%=o.error%}</code>
+</script>
+<script>
+    var toolbar = defaultConfig.toolbar;
+    document.getElementById("result").innerHTML = tmpl("tmpl-toolbar", toolbar);
+    $('#find').click(function () {
+        $('#find_window').window('open')
+    })
+</script>
+	</body>
+</html>

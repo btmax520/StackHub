@@ -1,0 +1,90 @@
+﻿@using Web.Helper
+@{
+    var Job = ViewBag.Job as Web.Models.Job;
+    var Company = ViewBag.Company as Web.Models.Company;
+}
+<div class="am-g">
+    <div class="am-u-md-8">
+        <div class="am-g">
+            <div class="am-u-md-8">
+                <h1 class="" title="软件测试工程师">
+                    软件测试工程师
+                </h1>
+                <div>
+                    <b> 15K-25K </b> / <a href="#">
+                        北京
+                    </a> / <a href="#">经验3-5年</a> / <a href="#">学历本科</a> / <a href="#">全职</a>
+                </div>
+                <div>
+                    <span class="font-green"><b>技能要求：</b></span>
+                    <span id="ex-position-skills"><a href="javascript:void(0);">android</a> / <a href="javascript:void(0);">python</a> / <a href="javascript:void(0);">java</a> / <a href="javascript:void(0);">lua</a> / <a href="javascript:void(0);">ios</a> / <a href="javascript:void(0);">自动化</a></span>
+                </div>
+                <p class="text-muted">更新时间：2016-05-31</p>
+                
+            </div>
+        </div>
+        <div class="am-g">
+            <div data-am-widget="titlebar" class="am-titlebar am-titlebar-default">
+                <h2 class="am-titlebar-title ">
+                    职位描述
+                </h2>
+            </div>
+            <p style="margin-left:40px;">
+                @Html.Raw(Job.Description.Replace("\r\n", "<br>"))
+            </p>
+        </div>
+        <div class="am-g" style="background-color:#f5f5f5">
+            <div class="am-u-md-8">
+                <div>
+                    在线简历
+                    <a href="/resume" class="font-green">
+                        <u> 高高（<span title="简历完整度"><u>85%</u></span>）</u>
+                    </a>
+                </div>
+                <div>
+                    <span>123</span>
+                </div>
+            </div>
+            <div class="am-fr">
+                <a class="am-btn am-btn-xl am-btn-danger" href="deliver">投递简历</a>
+            </div>
+        </div>
+        <div class="am-g">
+            <div data-am-widget="titlebar" class="am-titlebar am-titlebar-default">
+                <h2 class="am-titlebar-title">
+                    评论
+                </h2>
+            </div>
+            <article class="am-comment" style="margin-top:10px;margin-left:40px;">
+                <a href="#link-to-user-home">
+                    <img src="" alt="" class="am-comment-avatar" width="48" height="48" />
+                </a>
+
+                <div class="am-comment-main">
+                    <header class="am-comment-hd">
+                        <!--<h3 class="am-comment-title">评论标题</h3>-->
+                        <div class="am-comment-meta">
+                            <a href="#link-to-user" class="am-comment-author">某人</a>
+                            评论于 <time datetime="2013-07-27T04:54:29-07:00" title="2013年7月27日 下午7:54 格林尼治标准时间+0800">2014-7-12 15:30</time>
+                        </div>
+                    </header>
+
+                    <div class="am-comment-bd">
+                        ...
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+    <div class="am-u-md-4">
+        <div class="">
+            <h3>@Company.Name</h3>
+            <ul>
+                <li><span>行业：</span>@Company.Industry</li>
+                <li><span>规模：</span>@Company.Size</li>
+                <li><span>性质：</span>@Company.Type@Html.GetOptionText()</li>
+                <li><span>电话：</span>@Company.Phone</li>
+            </ul>
+        </div>
+    </div>
+</div>

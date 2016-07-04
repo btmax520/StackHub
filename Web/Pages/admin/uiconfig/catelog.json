@@ -1,0 +1,6 @@
+{
+  "title": "分类管理",
+  "type": "subpage",
+  "component": "treegrid",
+  "data": "catelog.json"
+}

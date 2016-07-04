@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Basic Accordion - jQuery EasyUI Demo</title>
+        <link rel="stylesheet" type="text/css" href="/admin/easyui/themes/material/easyui.css">
+        <link rel="stylesheet" type="text/css" href="/admin/easyui/themes/icon.css">
+        <link rel="stylesheet" type="text/css" href="/admin/css/main.css">
+        <script type="text/javascript" src="/admin/js/jquery.min.js"></script>
+        <script type="text/javascript" src="/admin/js/tmpl.min.js"></script>
+        <script type="text/javascript" src="/admin/js/main.js"></script>
+        <script type="text/javascript" src="/admin/easyui/jquery.easyui.min.js"></script>
+    </head>
+	<body>
+        <div id="toolbar" style="margin-bottom:4px;">
+            
+        </div>
+        <div id="datagrid"></div>
+        <div id="find_window" class="easyui-window" title="查找" data-options="modal:true,closed:true,iconCls:'icon-search'" style="width:500px;height:200px;padding:10px;">
+            <input class="easyui-datebox"/>
+        </div>
+        <div id="tmpl">
+            <!--<script type="text/x-tmpl" id="tmpl-toolbar">
+                <div style="margin-bottom:4px;">
+                    <div class="easyui-panel" style="padding:5px;border:1px solid groove;">
+                        {% for (var i=0; i < o.length; i++) { %}
+                        <a id="find" href="#" class="easyui-linkbutton" data-options="toggle:true,group:'g2',plain:true">{%=o[i].text%}</a>
+                        {% } %}
+                    </div>
+                </div>
+            </script>-->
+
+        </div>
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            url : "/admin/tmpl/index.html",
+			dataType : "html",
+			success: function (data) {
+			    //alert(data);
+			    $('#tmpl').append(data);
+			    var toolbar = defaultConfig.toolbar;
+			    document.getElementById("toolbar").innerHTML = tmpl("tmpl-toolbar", toolbar);
+			    $('.easyui-panel').panel();
+			    $('.easyui-linkbutton').linkbutton();
+
+			    $('#find').click(function () {
+			        $('#find_window').window('open')
+			    })
+			},
+			error: function(){		
+			}
+							
+		})
+    });
+
+   
+</script>
+	</body>
+</html>

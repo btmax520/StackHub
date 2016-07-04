@@ -1,0 +1,237 @@
+﻿
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>数据构架</title>
+        <link rel="stylesheet" type="text/css" href="/admin/easyui/themes/default/easyui.css">
+        <link rel="stylesheet" type="text/css" href="/admin/easyui/themes/icon.css">
+        <link rel="stylesheet" type="text/css" href="/admin/css/main.css">
+        <script type="text/javascript" src="/admin/js/jquery.min.js"></script>
+        <script type="text/javascript" src="/admin/js/tmpl.min.js"></script>
+        <script type="text/javascript" src="/admin/js/main.js"></script>
+        <script type="text/javascript" src="/admin/easyui/jquery.easyui.min.js"></script>
+        <script type="text/javascript" src="/admin/easyui/datagrid-cellediting.js"></script>
+    </head>
+	<body>
+        <div id="mainButton"></div>
+        <div id="mainGrid" style="margin-top:5px"></div>
+        <table id="dg"></table>
+        <script type="text/x-tmpl" id="tmpl-mainbuttom">
+            <div class="easyui-panel" style="padding:2px;">
+                {% for (var i=0; i < o.buttons.length; i++) { %}
+                <a class="easyui-linkbutton" cmd="{%=o.buttons[i].cmd%}" href="{%=o.buttons[i].url%}" data-options="plain:true">{%=o.buttons[i].name%}</a>
+                {% } %}
+            </div>
+        </script>
+        <script type="text/x-tmpl" id="tmpl-datagrid">
+            <form id="ff" method="post">
+                <table cellpadding="5">
+                    <tr>
+                        <td>名称：</td>
+                        <td><input class="easyui-textbox" type="text" name="schema" data-options="required:true"></td>
+                    </tr>
+                    <tr>
+                        <td>描述：</td>
+                        <td><input class="easyui-textbox" type="text" name="name" data-options="required:true"></td>
+                    </tr>
+                </table>
+            </form>
+            <div style="margin-bottom:4px;">
+                <table id="mainDataGrid" title="BaseUser 基本用户信息" data-options="singleSelect:false,url:'/api/',method:'get'">
+                    <thead>
+                        <tr>
+                            {% for (var i=0; i < o.fields.length; i++) { %}
+                            <th data-options="field:'{%=o.fields[i].code%}'">{%=o.fields[i].name%}</th>
+                            {% } %}
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </script>
+        <script>
+            var schema = {
+                key: "metadata:schema:",
+                fields: [
+                    { code: "", name: "", id: "metadata:schema:code"},
+                    { code: "code", name: "字段编码", id: "metadata:schema:code" },
+                    { code: "name", name: "字段名称", id: "metadata:schema:name" },
+                    { code: "group", name: "字段分组", id: "metadata:schema:group" },
+                    { code: "ref", name: "字段引用", id: "metadata:schema:ref" },
+                    { code: "type", name: "字段类型", id: "metadata:schema:type" },
+                    { code: "lenght", name: "字段长度", id: "metadata:schema:lenght" },
+                    { code: "decimal", name: "字段小数", id: "metadata:schema:decimal" },
+                    { code: "descript", name: "字段描述", id: "metadata:schema:descript" },
+                    { code: "tip", name: "字段提示", id: "metadata:schema:tip" },
+                    { code: "title", name: "字段标题", id: "metadata:schema:text" },
+                ],
+                initial: {
+                    code: "123",
+                    name:"",
+                }
+            }
+            var grid = {
+                columns: [[
+                    { field: 'id', title: 'ID', rowspan: 2, width: 80, sortable: true },
+                    { field: 'code', title: '字段编码', rowspan: 2, width: 80, sortable: true },
+                    { field: 'name', title: '字段名称', rowspan: 2, width: 80, sortable: true },
+                    { title: 'Item Details', colspan: 4 }
+                                ], [
+                    { field: 'listprice', title: 'List Price', width: 80, align: 'right', sortable: true },
+                    { field: 'unitcost', title: 'Unit Cost', width: 80, align: 'right', sortable: true },
+                    { field: 'attr1', title: 'Attribute', width: 100 },
+                    { field: 'status', title: 'Status', width: 60 }
+                ]]
+            }
+            var mainButton = {
+                buttons : [
+                    { cmd: "back", name: "返回", url: "#" },
+                    { cmd: "cancel", name: "取消", url: "#" },
+                    { cmd: "save", name: "保存", url: "#" },
+                    { cmd: "add", name: "新行", url: "#" },
+                    { cmd: "del", name: "删除", url: "#" },
+                ]
+            }
+            var url = 'api/schema/'
+            //document.getElementById("mainGrid").innerHTML = tmpl("tmpl-datagrid", schema);
+            document.getElementById("mainButton").innerHTML = tmpl("tmpl-mainbuttom", mainButton);
+        </script>
+        <script>
+            $(document).ready(function () {
+                $('#dg').datagrid({
+                    columns: [[
+                        { field: 'chk', checkbox: true },
+                        { field: 'id', title: 'ID', width: 80, sortable: true },
+                        { field: 'code', title: '字段编码', width: 80, sortable: true, editor: 'text' },
+                        { field: 'name', title: '字段名称', width: 80, align: 'right', sortable: true, editor: 'text' },
+                        { field: 'group', title: '字段分组', width: 80, align: 'right', sortable: true, editor: 'text' },
+                        {
+                            field: 'ref', title: '引用类型', width: 100, editor: {
+                                type: 'combogrid',
+                                options: {
+                                    panelWidth: 500,
+                                    idField: 'itemid',
+                                    textField: 'productname',
+                                    columns: [[
+                                        { field: 'itemid', title: 'Item ID', width: 80 },
+                                        { field: 'productname', title: 'Product', width: 120 },
+                                        { field: 'listprice', title: 'List Price', width: 80, align: 'right' },
+                                        { field: 'unitcost', title: 'Unit Cost', width: 80, align: 'right' },
+                                        { field: 'attr1', title: 'Attribute', width: 200 },
+                                        { field: 'status', title: 'Status', width: 60, align: 'center' }
+                                    ]],
+                                    fitColumns: true,
+                                    data: {
+                                        "total": 28, "rows": [
+        { "productid": "FI-SW-01", "productname": "Koi", "unitcost": 10.00, "status": "P", "listprice": 36.50, "attr1": "Large", "itemid": "EST-1" },
+        { "productid": "K9-DL-01", "productname": "Dalmation", "unitcost": 12.00, "status": "P", "listprice": 18.50, "attr1": "Spotted Adult Female", "itemid": "EST-10" },
+        { "productid": "RP-SN-01", "productname": "Rattlesnake", "unitcost": 12.00, "status": "P", "listprice": 38.50, "attr1": "Venomless", "itemid": "EST-11" },
+        { "productid": "RP-SN-01", "productname": "Rattlesnake", "unitcost": 12.00, "status": "P", "listprice": 26.50, "attr1": "Rattleless", "itemid": "EST-12" },
+        { "productid": "RP-LI-02", "productname": "Iguana", "unitcost": 12.00, "status": "P", "listprice": 35.50, "attr1": "Green Adult", "itemid": "EST-13" },
+        { "productid": "FL-DSH-01", "productname": "Manx", "unitcost": 12.00, "status": "P", "listprice": 158.50, "attr1": "Tailless", "itemid": "EST-14" },
+        { "productid": "FL-DSH-01", "productname": "Manx", "unitcost": 12.00, "status": "P", "listprice": 83.50, "attr1": "With tail", "itemid": "EST-15" },
+        { "productid": "FL-DLH-02", "productname": "Persian", "unitcost": 12.00, "status": "P", "listprice": 23.50, "attr1": "Adult Female", "itemid": "EST-16" },
+        { "productid": "FL-DLH-02", "productname": "Persian", "unitcost": 12.00, "status": "P", "listprice": 89.50, "attr1": "Adult Male", "itemid": "EST-17" },
+        { "productid": "AV-CB-01", "productname": "Amazon Parrot", "unitcost": 92.00, "status": "P", "listprice": 63.50, "attr1": "Adult Male", "itemid": "EST-18" }
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        { field: 'type', title: '基本类型', width: 60, editor:{
+                                type:'combobox',
+                                options: {
+                                    editable:false,
+                                    valueField:'id',
+                                    textField:'text',
+                                    data: [{
+                                        "id": "string",
+                                        "text": "string"
+                                    }, {
+                                        "id": "number",
+                                        "text": "number"
+                                    }, {
+                                        "id": "object",
+                                        "text": "object",
+                                    }, {
+                                        "id": "array",
+                                        "text": "array"
+                                    }, {
+                                        "id": "boolean",
+                                        "text": "boolean"
+                                    }]
+                                }
+                            }
+                        },
+                        { field: 'lenght', title: '字段长度', width: 60, editor: 'numberbox'  },
+                        { field: 'precision', title: '小数位数', width: 60, editor: { type: 'numberbox', options: { precision: 0 } } },
+                        { field: 'tip', title: '字段提示', width: 60, editor: 'text' },
+                        { field: 'title', title: "字段标题", width: 60, editor: 'text' },
+                        ]
+                    ],
+                    //idField:"itemid",
+                    singleSelect: false,
+                    data: [
+		                
+                    ],
+                    onClickRow: function (index) {
+                        //$('#dg').datagrid('selectRow', index);
+                    },
+                    
+                }).datagrid('enableCellEditing');
+
+                $('.easyui-linkbutton').click(function () {
+                    var cmd = $(this).attr("cmd");
+                    switch (cmd){
+                        case 'back':
+                            var rows = $('#dg').datagrid('getChanges');
+                            if (rows.length) {
+                                $.messager.confirm('确认退出', '数据尚未保存，是否退出?', function (r) {
+                                    if (r) {
+                                        alert(r);
+                                    }
+                                });
+                            }
+                            break;
+                        case 'cancel':
+                            var rows = $('#dg').datagrid('getChanges');
+                            if (rows.length) {
+                                $.messager.confirm('确认取消', '数据已更改，取消后将丢失已修改数据?', function (r) {
+                                    if (r) {
+                                        $('#dg').datagrid('rejectChanges');
+                                    }
+                                });
+                            }
+                            break;
+                        case 'save':
+                            var rows = $('#dg').datagrid('getChanges');
+                            if (rows.length) {
+                                alert(JSON.stringify(rows));
+                                $.messager.confirm('确认保存', '是否保存?', function (r) {
+                                    if (r) {
+                                        $('#dg').datagrid('acceptChanges');
+                                    }
+                                });
+                            }
+                            break;
+                        case 'add':
+                            $('#dg').datagrid('appendRow', {});
+                            break;
+                        case 'del':
+                            var rows = $('#dg').datagrid('getChecked');
+                            $.messager.confirm('确认删除', '是否删除选中行数据?', function (r) {
+                                if (r) {
+                                    for (i = 0; i < rows.length; i++) {
+                                        var index = $('#dg').datagrid('getRowIndex', rows[i]);
+                                        $('#dg').datagrid('deleteRow', index);
+                                    }
+                                }
+                            });
+                            
+                            break;
+                    }
+                });
+            });
+        </script>
+	</body>
+</html>

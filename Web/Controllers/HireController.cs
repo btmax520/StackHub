@@ -15,5 +15,12 @@ namespace Web.Controllers
             //SetLeftActive("resume");
             return View();
         }
+
+        public ActionResult Detail()
+        {
+            SetTopActive("hire");
+            //SetLeftActive("resume");
+            return View();
+        }
     }
 }

@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Group DataList - jQuery EasyUI Demo</title>
+    <link rel="stylesheet" type="text/css" href="/admin/easyui/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="/admin/easyui/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="/admin/css/main.css">
+    <script type="text/javascript" src="/admin/easyui/jquery.min.js"></script>
+    <script type="text/javascript" src="/admin/easyui/jquery.easyui.min.js"></script>
+</head>
+<body>
+    <h2>Group DataList</h2>
+    <p>This example shows how to display items in groups.</p>
+    <div style="margin:20px 0"></div>
+    <div id="mainMenu" class="easyui-datalist" title="Group DataList" style="width:400px;height:250px">
+    </div>
+    <script>
+        $('#mainMenu').datalist({
+            title: "系统菜单",
+            groupField: "group",
+            data: [
+                { "text": "Epson WorkForce 845", "group": "Printer" },
+                { "text": "Canon PIXMA MG5320", "group": "Printer" },
+            ]
+        });
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>数据定义</title>
+	<meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="../easyui/themes/material/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../easyui/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../easyui/jquery.easyui.min.js"></script>
+</head>
+<body>
+    <div style="width:70%;float:left;">
+        <div style="margin-bottom:4px;">
+            <div class="easyui-panel" style="padding:5px;border:1px solid groove;">
+                <a href="#" class="easyui-linkbutton" data-options="toggle:true,group:'g2',plain:true">新增</a>
+                <a href="#" class="easyui-linkbutton" data-options="toggle:true,group:'g2',plain:true">保存</a>
+                <a href="#" class="easyui-linkbutton" data-options="toggle:true,group:'g2',plain:true">删除</a>
+                <a href="#" class="easyui-linkbutton" data-options="toggle:true,group:'g2',plain:true">修改</a>
+                <a href="#" class="easyui-linkbutton" data-options="toggle:true,group:'g2',plain:true">Button 5</a>
+                <a href="javascript:void(0)" class="easyui-linkbutton" onclick="$('#w').window('open')">Open</a>
+                <a href="javascript:void(0)" class="easyui-linkbutton" onclick="$('#w').window('close')">Close</a>
+                <div>
+                    <input class="easyui-combobox"
+                           name="language"
+                           data-options="
+                           url:'combobox_data1.json',
+                           method:'get',
+                           valueField:'id',
+                           textField:'text',
+                           panelHeight:'auto'
+                           ">
+                </div>
+            </div>
+        </div>
+        <table class="easyui-datagrid" data-options="singleSelect:true">
+            <thead>
+                <tr>
+                    <th data-options="field:'index'">字段索引</th>
+                    <th data-options="field:'code'">字段编码</th>
+                    <th data-options="field:'name'">字段名称</th>
+                    <th data-options="field:'group'">字段分组</th>
+                    <th data-options="field:'prop'">字段属性</th>
+                    <th data-options="field:'type'">基本类型</th>
+                    <th data-options="field:'lenght'">字段长度</th>
+                    <th data-options="field:'decimal'">字段小数</th>
+                    <th data-options="field:'descript'">字段描述</th>
+                    <th data-options="field:'text'">显示名称</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td>001</td>
+                    <td>name1</td>
+                    <td>2323</td>
+                    <td>
+                        <input class="easyui-combobox"
+                               name="language"
+                               data-options="
+                               url:'combobox_data1.json',
+                               method:'get',
+                               valueField:'id',
+                               textField:'text',
+                               panelHeight:'auto'
+                               ">
+                    </td>
+                    <td>001</td>
+                    <td>name1</td>
+                    <td>2323</td>
+                    <td></td>
+                    <td>001</td>
+                </tr>
+                <tr>
+                    <td>002</td>
+                    <td>name2</td>
+                    <td>4612</td>
+                    <td>002</td>
+                    <td>name2</td>
+                    <td>4612</td>
+                    <td>002</td>
+                    <td>name2</td>
+                    <td>4612</td>
+                    <td>002</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div style="width:28%;background-color:brown;float:right;">
+        <table id="pg" class="easyui-propertygrid" style="width:300px" data-options="
+               url:'/admin/data/propertygrid_dd.json',
+               method:'get',
+               showGroup:true,
+               scrollbarSize:0
+               ">
+        </table>
+    </div>
+    <div id="w" class="easyui-window" title="查找" data-options="modal:true,closed:true,iconCls:'icon-search'" style="width:500px;height:200px;padding:10px;">
+        <input class="easyui-datebox"></input>
+    </div>
+</body>
+</html>

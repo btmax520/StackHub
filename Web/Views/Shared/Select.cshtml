@@ -1,0 +1,14 @@
+﻿
+<select data-am-selected id=@PageData["id"] name=@PageData["name"] value=@PageData["value"] @PageData["multiple"]>
+@foreach (KeyValuePair<string, string> option in @PageData["options"])
+{
+    if (@PageData["value"] != null && @PageData["value"].Contains(option.Key))
+    { 
+        <option selected value=@option.Key>@option.Value</option>
+    }
+    else
+    { 
+        <option value=@option.Key>@option.Value</option>
+    }
+}
+</select>

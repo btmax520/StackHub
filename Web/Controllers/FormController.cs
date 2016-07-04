@@ -32,8 +32,9 @@ namespace Web.Controllers
             return tmpl;
         }
 
-        public ResultJson Post(string schema, [FromBody]JObject value)
+        public ResultJson Post(string id, [FromBody]JObject value)
         {
+            string schema = id;
             var result = new ResultJson();
             if (string.IsNullOrEmpty(schema))
             {
@@ -50,27 +51,17 @@ namespace Web.Controllers
                 string key = string.Format("{0}:{1}", schema, value["id"]);
                 var success = false;
                 success = RedisSercice.DB.StringSet(key, value.ToString());
-
-
-                success = !RedisSercice.DB.KeyExists("user:phone:" + value["phone"]);
-                success = success && !RedisSercice.DB.KeyExists("user:email:" + value["email"]);
                 if (success == false)
                 {
                     result.success = false;
-                    result.messages.Add("电话或电子邮件已经注册过");
+                    result.messages.Add("保存失败");
                     return result;
                 }
-                success = success && RedisSercice.DB.StringSet("user:" + value["id"], value.ToString());
-                success = success && RedisSercice.DB.StringSet("user:phone:" + value["phone"], value["id"].ToString());
-                success = success && RedisSercice.DB.StringSet("user:email:" + value["email"], value["id"].ToString());
-                if (success)
+                else
                 {
                     result.success = true;
                     result.rows.Add(value);
-                }
-                else {
-                    result.success = false;
-                    result.rows.Add("保存失败");
+                    result.messages.Add("保存成功");
                 }
             }
             catch (Exception e)

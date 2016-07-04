@@ -1,0 +1,206 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>数据构架</title>
+    <link rel="stylesheet" type="text/css" href="/admin/easyui/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="/admin/easyui/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="/admin/css/main.css">
+    <script type="text/javascript" src="/admin/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/admin/js/tmpl.min.js"></script>
+    <script type="text/javascript" src="/admin/js/main.js"></script>
+    <script type="text/javascript" src="/admin/easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="/admin/easyui/datagrid-cellediting.js"></script>
+</head>
+<body>
+    <div id="mainButton"></div>
+    <table id="pg"></table>
+    <table id="dg"></table>
+    <script type="text/x-tmpl" id="tmpl-mainbuttom">
+        <div class="easyui-panel" style="padding:2px;">
+            {% for (var i=0; i < o.buttons.length; i++) { %}
+            <a class="easyui-linkbutton" cmd="{%=o.buttons[i].cmd%}" href="{%=o.buttons[i].url%}" data-options="plain:true">{%=o.buttons[i].name%}</a>
+            {% } %}
+        </div>
+    </script>
+    <script>
+        var mainButton = {
+            buttons: [
+                { cmd: "back", name: "返回", url: "#" },
+                { cmd: "cancel", name: "取消", url: "#" },
+                { cmd: "save", name: "保存", url: "#" },
+                { cmd: "add", name: "新行", url: "#" },
+                { cmd: "del", name: "删除", url: "#" },
+            ]
+        }
+        document.getElementById("mainButton").innerHTML = tmpl("tmpl-mainbuttom", mainButton);
+    </script>
+    <script>
+        function getUIColumns() {
+            var columns = [[
+                                        { field: 'itemid', title: 'Item ID', width: 80 },
+                                        { field: 'productname', title: 'Product', width: 120 },
+                                        { field: 'listprice', title: 'List Price', width: 80, align: 'right' },
+                                        { field: 'unitcost', title: 'Unit Cost', width: 80, align: 'right' },
+                                        { field: 'attr1', title: 'Attribute', width: 200 },
+                                        { field: 'status', title: 'Status', width: 60, align: 'center' }
+            ]]
+            var uiScema = baseSchema;
+            var uiColumns = [[]];
+            var schemaFields = uiScema.fields;
+            for (var key in schemaFields) {
+                var schemaField = schemaFields[key];
+                var item = {};
+
+                item.field = schemaField.code;
+                item.title = schemaField.name;
+                item.width = 100;
+
+                switch (schemaField.type)
+                {
+                    case 'string':
+                        item.editor = 'text';
+                        break;
+                    case 'number':
+                        item.editor = { type: 'numberbox', options: { precision: schemaField.precision ? schemaField.precision : 0} };
+                        break;
+                }
+
+
+                uiColumns[0].push(item);
+            }
+            return uiColumns;
+        }
+        $(document).ready(function () {
+            $('#pg').propertygrid({
+                showGroup: false,
+                width:400,
+                data: [
+                        { "name": "id", "value": "", "code": "id" },
+                        { "name": "code", "value": "", "code": "code", "editor": "text" },
+                        { "name": "name", "value": "", "code": "name", "editor": "text" }
+                ]
+            });
+
+
+            //var uiColumns = getUIColumns();
+                $('#dg').datagrid({
+                    columns: getUIColumns(),
+                    title:'system/schema',
+                    //idField:"itemid",
+                    singleSelect: false,
+                    data: [
+
+                    ],
+                    onClickRow: function (index) {
+                        //$('#dg').datagrid('selectRow', index);
+                    },
+
+                }).datagrid('enableCellEditing');
+
+                $('.easyui-linkbutton').click(function () {
+                    var cmd = $(this).attr("cmd");
+                    switch (cmd){
+                        case 'back':
+                            var rows = $('#dg').datagrid('getChanges');
+                            if (rows.length) {
+                                $.messager.confirm('确认退出', '数据尚未保存，是否退出?', function (r) {
+                                    if (r) {
+                                        alert(r);
+                                    }
+                                });
+                            }
+                            break;
+                        case 'cancel':
+                            var rows = $('#dg').datagrid('getChanges');
+                            if (rows.length) {
+                                $.messager.confirm('确认取消', '数据已更改，取消后将丢失已修改数据?', function (r) {
+                                    if (r) {
+                                        $('#dg').datagrid('rejectChanges');
+                                    }
+                                });
+                            }
+                            break;
+                        case 'save':
+                            var postData = {
+                                dataItems: []
+                            }
+                            var schemaHeadRows = $('#pg').datagrid('getChanges');
+                            var schemaHeadData = {
+                                key: "system/schema",
+                                value: {   
+                                }
+                            };
+                            for (i = 0; i < schemaHeadRows.length; i++) {
+                                var item = schemaHeadRows[i];
+                                schemaHeadData.value[item.code] = item.value;
+                            }
+                            postData.dataItems.push(schemaHeadData);
+                            saveData(postData, function (data) {
+                                pgRowDatas = [];
+                                for (var key in data)
+                                {
+                                    switch (key){
+                                        case "id":
+                                        case "code":
+                                        case "name":
+                                            var pgRowData = { "name": key, "value": data[key], "code": key };
+                                            if (key == "code" || key == "name")
+                                            {
+                                                pgRowData.editor = 'text';
+                                            }
+                                            pgRowDatas.push(pgRowData)
+                                    }
+                                }
+                                $('#pg').datagrid('loadData', pgRowDatas);
+                            });
+                            return;
+                            var cell = $('#dg').datagrid('cell');
+                            if (cell) {
+                                $('#dg').datagrid('endEdit',cell.index);
+                            }
+                            var schemaFieldRows = $('#dg').datagrid('getChanges');
+                            if (schemaFieldRows.length) {
+                                for (i = 0; i < schemaFieldRows.length; i++)
+                                {
+                                    var item = schemaFieldRows[i];
+                                    var schemaFieldData = {
+                                        key: "schema/field",
+                                        value: item,
+                                        schema:schemaHeadData
+                                    }
+                                    postData.dataItems.push(schemaFieldData);
+                                }
+                                
+                            }
+                            saveData(postData, function (data) {
+                                alert(JSON.stringify(data));
+                            });
+                            $.messager.confirm('确认保存', '是否保存?', function (r) {
+                                if (r) {
+                                    $('#dg').datagrid('acceptChanges');
+                                }
+                            });
+                            break;
+                        case 'add':
+                            $('#dg').datagrid('appendRow', {});
+                            break;
+                        case 'del':
+                            var rows = $('#dg').datagrid('getChecked');
+                            $.messager.confirm('确认删除', '是否删除选中行数据?', function (r) {
+                                if (r) {
+                                    for (i = 0; i < rows.length; i++) {
+                                        var index = $('#dg').datagrid('getRowIndex', rows[i]);
+                                        $('#dg').datagrid('deleteRow', index);
+                                    }
+                                }
+                            });
+
+                            break;
+                    }
+                });
+            });
+    </script>
+</body>
+</html>

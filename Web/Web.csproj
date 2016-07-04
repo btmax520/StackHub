@@ -44,6 +44,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -123,6 +131,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="css\fonts\" />
+    <Folder Include="DbContext\" />
     <Folder Include="emotions\" />
     <Folder Include="img\" />
     <Folder Include="Pages\admin\" />
@@ -132,9 +141,9 @@
     <Folder Include="Pages\img\" />
     <Folder Include="Pages\js\" />
     <Folder Include="Pages\publish\" />
-    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\ResumeController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -169,6 +178,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HireController.cs" />
+    <Compile Include="Controllers\PackageController.cs" />
     <Compile Include="Controllers\JobController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\FormController.cs" />
@@ -180,6 +190,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606191042206_InitialCreate.cs" />
+    <Compile Include="Migrations\201606191042206_InitialCreate.Designer.cs">
+      <DependentUpon>201606191042206_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Model.cs" />
     <Compile Include="Models\PostData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\Util.cs" />
@@ -188,11 +204,18 @@
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="css\amazeui.css" />
+    <Content Include="css\amazeui.min.css" />
     <Content Include="css\bootstrap-datetimepicker.min.css" />
     <Content Include="css\hamburger-retina.gif" />
     <Content Include="css\hamburger.gif" />
     <Content Include="css\main.css" />
     <Content Include="css\responsive-nav.css" />
+    <Content Include="demo\modal.html" />
+    <Content Include="demo\theme.html" />
+    <Content Include="demo\color.html" />
+    <Content Include="demo\form.html" />
+    <Content Include="demo\list.html" />
     <Content Include="demo\ui.html" />
     <Content Include="demo\index.html" />
     <Content Include="demo\NavMent.html" />
@@ -239,6 +262,8 @@
     <Content Include="Pages\SqlHelper-master.zip" />
     <Content Include="Pages\sqlhelper2-master.zip" />
     <Content Include="Pages\数据结构.xlsx" />
+    <Content Include="download\tagsinput-master.zip" />
+    <None Include="Properties\PublishProfiles\qcloud.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -263,10 +288,8 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
-    <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\Shared\TopCategory.cshtml" />
     <Content Include="Views\Shared\Footer.cshtml" />
-    <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\Publish\Subpackage.cshtml" />
     <Content Include="Views\Hire\Index.cshtml" />
     <Content Include="Views\Resume\Index.cshtml" />
@@ -275,6 +298,35 @@
     <Content Include="Views\Shared\_LayoutPage1.cshtml" />
     <Content Include="Views\Shared\Left.cshtml" />
     <Content Include="Views\Job\Index.cshtml" />
+    <Content Include="Views\User\Register.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\Shared\ServerMessages.cshtml" />
+    <Content Include="Views\Shared\RawJson.cshtml" />
+    <Content Include="Views\Hire\List.cshtml" />
+    <Content Include="Views\Hire\Nav.cshtml" />
+    <Content Include="Views\Publish\Job.cshtml" />
+    <Content Include="Views\Shared\Select.cshtml" />
+    <Content Include="Views\Shared\TagInput.cshtml" />
+    <Content Include="Views\Home\Demo.cshtml" />
+    <Content Include="Views\Shared\ListFilter.cshtml" />
+    <Content Include="Views\Hire\Detail.cshtml" />
+    <Content Include="Views\Publish\Package.cshtml" />
+    <Content Include="Views\Publish\Company.cshtml" />
+    <Content Include="Views\Shared\Modal.cshtml" />
+    <Content Include="Views\Publish\Job\RecentJob.cshtml" />
+    <Content Include="Views\Publish\Job\RecentResume.cshtml" />
+    <Content Include="Views\Publish\Resume.cshtml" />
+    <Content Include="Views\Publish\Resume\Project.cshtml" />
+    <Content Include="Views\Publish\Resume\Work.cshtml" />
+    <Content Include="Views\Publish\Resume\Education.cshtml" />
+    <Content Include="Views\Publish\Resume\Basic.cshtml" />
+    <Content Include="Views\Publish\Resume\Skill.cshtml" />
+    <Content Include="Views\Publish\Resume\Description.cshtml" />
+    <Content Include="Views\Job\Detail.cshtml" />
+    <Content Include="Views\Base\Filter.cshtml" />
+    <Content Include="Views\Base\Select.cshtml" />
+    <Content Include="Views\Base\Pagination.cshtml" />
+    <Content Include="Views\Package\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -289,6 +341,14 @@
       <Project>{cf282a94-5648-46e0-ae94-bd636d50ea9f}</Project>
       <Name>Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201606191042206_InitialCreate.resx">
+      <DependentUpon>201606191042206_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

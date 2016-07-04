@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Basic Accordion - jQuery EasyUI Demo</title>
+        <link rel="stylesheet" type="text/css" href="/admin/easyui/themes/material/easyui.css">
+        <link rel="stylesheet" type="text/css" href="/admin/easyui/themes/icon.css">
+        <link rel="stylesheet" type="text/css" href="/admin/css/main.css">
+        <script type="text/javascript" src="/admin/js/jquery.min.js"></script>
+        <script type="text/javascript" src="/admin/js/tmpl.min.js"></script>
+        <script type="text/javascript" src="/admin/js/main.js"></script>
+        <script type="text/javascript" src="/admin/easyui/jquery.easyui.min.js"></script>
+    </head>
+	<body>
+        <div id="toolbar" style="margin-bottom:4px;">
+            
+        </div>
+        <div id="datagrid"></div>
+        <div id="find_window" class="easyui-window" title="查找" data-options="modal:true,closed:true,iconCls:'icon-search'" style="width:500px;height:200px;padding:10px;">
+            <input class="easyui-datebox"/>
+        </div>
+<script type="text/x-tmpl" id="tmpl-toolbar">
+    <div style="margin-bottom:4px;">
+        <div class="easyui-panel" style="padding:5px;border:1px solid groove;">
+            {% for (var i=0; i < o.length; i++) { %}
+            <a id="find" href="#" class="easyui-linkbutton" data-options="toggle:true,group:'g2',plain:true">{%=o[i].text%}</a>
+            {% } %}
+        </div>
+    </div>
+</script>
+<script type="text/x-tmpl" id="tmpl-datagrid">
+    <div style="margin-bottom:4px;">
+        <table class="easyui-datagrid" data-options="singleSelect:true,url:'user_metadata.json',method:'get'">
+            <thead>
+                <tr>
+                    {% for (var i=0; i < o.fields.length; i++) { %}
+                    <th data-options="field:'{%=o.fields[i].code%}'">{%=o.fields[i].name%}</th>
+                    {% } %}
+                </tr>
+            </thead>
+        </table>
+    </div>
+</script>
+
+<script>
+    var toolbar = defaultConfig.toolbar;
+    document.getElementById("toolbar").innerHTML = tmpl("tmpl-toolbar", toolbar);
+    $('#find').click(function () {
+        $('#find_window').window('open')
+    })
+    var schema = metadataSchema;
+    document.getElementById("datagrid").innerHTML = tmpl("tmpl-datagrid", schema);
+   
+</script>
+	</body>
+</html>

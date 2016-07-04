@@ -1,0 +1,39 @@
+﻿body {
+    font-family:verdana,helvetica,arial,sans-serif;
+    padding:20px;
+    font-size:14px;
+    margin:0;
+}
+h2 {
+    font-size:18px;
+    font-weight:bold;
+    margin:0;
+    margin-bottom:15px;
+}
+.demo-info{
+	padding:0 0 12px 0;
+}
+.demo-tip{
+	display:none;
+}
+
+
+#page_header {
+    padding-top: 60px;
+    padding-bottom: 10px;
+    color: inherit;
+    background-color: #fff;
+}
+
+#page_banner {
+    height:120px;
+    color: inherit;
+    margin-bottom:20px;
+    background-color: #eee;
+}
+
+#page_footer {
+    height:400px;
+    color:#fff;
+    background-color:#313131;
+}

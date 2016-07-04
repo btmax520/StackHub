@@ -1,0 +1,31 @@
+﻿
+@if (ViewBag.Success == null) {
+    return;
+}
+@if (ViewBag.Success)
+{
+    <div class="am-alert" data-am-alert>
+        <button type="button" class="am-close">&times;</button>
+        <h3>操作成功</h3>
+        <ul>
+            @foreach (var message in ViewBag.Messages)
+            {
+                <li>@message</li>
+            }
+        </ul>
+    </div>
+}
+else
+{
+    <div class="am-alert am-alert-danger" data-am-alert>
+        <button type="button" class="am-close">&times;</button>
+        <h3>操作失败</h3>
+        <ul>
+            @foreach (var message in ViewBag.Messages)
+            {
+                <li>@message</li>
+            }
+        </ul>
+    </div>
+}
+

@@ -1,0 +1,9 @@
+﻿<script type="text/x-tmpl" id="tmpl-toolbar">
+    <div style="margin-bottom:4px;">
+        <div class="easyui-panel" style="padding:5px;border:1px solid groove;">
+            {% for (var i=0; i < o.length; i++) { %}
+            <a id="find" href="#" class="easyui-linkbutton" data-options="toggle:true,group:'g2',plain:true">{%=o[i].text%}</a>
+            {% } %}
+        </div>
+    </div>
+</script>

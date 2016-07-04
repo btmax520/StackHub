@@ -36,12 +36,12 @@
     {
       "id": "hire",
       "name": "招聘",
-      "url": "hire"
+      "url": "/hire"
     },
     {
       "id": "job",
       "name": "求职",
-      "url": "job",
+      "url": "/job",
       "subject": [
         {
           "id": "resume",
@@ -50,7 +50,7 @@
         },
         {
           "id": "collection",
-          "name": "收藏",
+          "name": "职位收藏",
           "url": "resume/collection"
         },
         {

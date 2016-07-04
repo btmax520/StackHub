@@ -63,6 +63,21 @@ namespace StackHub.Core.Service
             return result;
         }
 
+        public static long GetSequence()
+        {
+            string key = "global:seqence";
+            if (DB.KeyExists(key))
+            {
+                long result = DB.StringIncrement(key);
+                return result;
+            }
+            else
+            {
+                DB.StringSet(key, seqence);
+                return seqence;
+            }
+        }
+
         public static Dictionary<string,string> GetHash(string key, Dictionary<string, string> values)
         {
             IDatabase db = redis.GetDatabase();
@@ -105,6 +120,13 @@ namespace StackHub.Core.Service
         {
             IDatabase db = redis.GetDatabase();
             
+        }
+
+        public static bool Insert(string schema, string value)
+        {
+            IDatabase db = redis.GetDatabase();
+            string key = schema + ":" + GetSequence();
+            return db.StringSet(key, value);
         }
 
     }

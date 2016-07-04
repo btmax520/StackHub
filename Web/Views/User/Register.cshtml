@@ -1,111 +1,131 @@
-﻿
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">用户注册</div>
-                <div class="panel-body">
-                    <div id="registerBox" class="col-md-6">
-                        <form id="registerForm" class="form-horizontal" data-toggle="validator">
-                            <div class="form-group">
-                                <label for="inputPhone" class="col-sm-2 control-label">手机号码</label>
-                                <div class="col-sm-10">
-                                    <input type="tel" class="form-control" id="inputPhone" placeholder="手机号码" data-minlength="11" pattern="[0-9]*" name="phone" required>
-                                    <div class="help-block with-errors">输入11位手机号</div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputEmail" class="col-sm-2 control-label">电子邮箱</label>
-                                <div class="col-sm-10">
-                                    <input type="email" class="form-control" id="inputEmail" placeholder="电子邮箱" name="email" required>
-                                    <div class="help-block with-errors"></div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputName" class="col-sm-2 control-label">用户名</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="inputName" placeholder="用户名" name="name" required>
-                                    <div class="help-block with-errors"></div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputPassword" class="col-sm-2 control-label">登录密码</label>
-                                <div class="col-sm-10">
-                                    <input type="password" class="form-control" id="inputPassword" placeholder="登录密码" data-minlength="6" name="password" required>
-                                    <div class="help-block with-errors">最少6个字符</div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputPassword2" class="col-sm-2 control-label">密码确认</label>
-                                <div class="col-sm-10">
-                                    <input type="password" class="form-control" id="inputPassword2" placeholder="密码确认" data-match="#inputPassword" data-match-error="密码不一致" required>
-                                    <div class="help-block with-errors"></div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputSex" class="col-sm-2 control-label">性别</label>
-                                <div class="col-sm-10">
-                                    <label class="radio-inline">
-                                        <input type="radio" name="sex" id="inputSex1" value="男" required>男
-                                    </label>
-                                    <label class="radio-inline">
-                                        <input type="radio" name="sex" id="inputSex2" value="女" required>女
-                                    </label>
-                                    <div class="help-block with-errors"></div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-3 col-sm-offset-2">
-                                    <button id="registerBtn" type="button" class="btn btn-info">注册并登录</button>
-                                </div>
-                                <div class="col-sm-4" style="line-height:34px;">
-                                    <p>
-                                        已有帐号？
-                                        <a href="login">直接登录</a>
-                                        </>
-                                </div>
-                            </div>
-                        </form>
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>用户注册</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="stylesheet" href="/css/amazeui.min.css" />
+    <style>
+        .header {
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 200%;
+            color: #333;
+            margin-top: 30px;
+        }
+
+        .header p {
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="am-g">
+            <div class="am-u-md-8 am-u-md-centered">
+                <h1><img src="/img/logo.jpg" class="am-img-responsive" />会员系统</h1>
+            </div>
+        </div>
+        <hr />
+    </div>
+    <div class="am-g">
+        <div class="am-u-lg-6 am-u-md-8 am-u-md-centered">
+            <div class="am-titlebar am-titlebar-default" style="margin-bottom:20px;">
+                <h2 class="am-titlebar-title ">
+                    新用户注册
+                </h2>
+            </div>
+            <form id="registerForm" class="am-form am-form-horizontal" data-toggle="validator" method="post">
+                <div class="am-form-group">
+                    <label for="inputPhone" class="am-u-md-2 am-form-label am-text-nowrap">手机号码：</label>
+                    <div class="am-u-md-10">
+                        <input type="tel" id="inputPhone" name="phone" value=@Request["phone"] placeholder="输入你的手机号码" minlength="11" maxlength="11" required>
+                        <div class="help-block with-errors">输入11位手机号</div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div>
-            <div id="returnBox" class="alert alert-warning" style="display:none;">
-                <a href="#" class="close" data-dismiss="alert">
-                    &times;
-                </a>
-                <strong id="returnMsg"></strong>
-            </div>
+                <div class="am-form-group">
+                    <label for="inputEmail" class="am-u-md-2 am-form-label am-text-nowrap">电子邮件：</label>
+                    <div class="am-u-md-10">
+                        <input type="email" id="inputEmail" name="email" value=@Request["email"] placeholder="输入你的电子邮件" required>
+                    </div>
+                </div>
+                <div class="am-form-group">
+                    <label for="inputName" class="am-u-md-2 am-form-label am-text-nowrap">用户名：</label>
+                    <div class="am-u-md-10">
+                        <input type="text" id="inputName" name="name" value=@Request["name"] placeholder="输入你的用户名" required>
+                    </div>
+                </div>
+                <div class="am-form-group">
+                    <label for="imputPassword1" class="am-u-md-2 am-form-label am-text-nowrap">密码：</label>
+                    <div class="am-u-md-10">
+                        <input type="password" id="imputPassword1" name="password" placeholder="设置一个密码吧" required>
+                    </div>
+                </div>
+                <div class="am-form-group">
+                    <label for="imputPassword2" class="am-u-md-2 am-form-label am-text-nowrap">密码确认：</label>
+                    <div class="am-u-md-10">
+                        <input type="password" id="imputPassword2" placeholder="密码确认" data-equal-to="#imputPassword1" required>
+                    </div>
+                </div>
+                <div class="am-form-group">
+                    <div class="am-u-md-offset-2 am-u-md-10">
+                        <label for="remember-me">
+                            <input id="remember-me" type="checkbox" name="remember" checked>记住我
+                        </label>
+                    </div>
+                </div>
+                <div class="am-form-group">
+                    <div class="am-u-md-10 am-u-md-offset-2">
+                        <button type="submit" class="am-btn am-btn-primary">注册并登录</button>
+                        <span>
+                            <a href="/user/login" class="am-btn am-btn-link">已有帐号？直接登录</a>
+                        </span>
+                    </div>
+                </div>
+            </form>
+            @RenderPage("~/Views/Shared/ServerMessages.cshtml")
+            <hr>
+
+            <p class="">© @DateTime.Now.Year 云南镕诚建设项目管理（集团）有限公司 版权所有　邮箱：<a href="mailto:YNRCJT@163.com">YNRCJT@163.com</a></p>
         </div>
     </div>
-    <script src="~/js/validator.min.js"></script>
-</div>
-<script>
-        $(document).ready(function () {
-            $('#registerBtn').click(function (e) {
-                $('#returnBox').hide();
-                $('#registerForm').validator('validate');
-                if ($('#registerForm .has-error').length > 0)
-                {
-                    return;
-                }
-                var parms = $('#registerForm').serializeArray()
-                $.post(
-                    "http://localhost:54007/api/form/register",
-                    parms,
-                    function (data) {
-                        if (data.success) {
-                            window.location.href = "login.html";
-                        }
-                        else {
-                            $('#returnMsg').text(data.messages[0]);
-                            $('#returnBox').show();
-                        }
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/amazeui.min.js"></script>
+    <script type="text/javascript">
+        //$(document).ready(function () {
+        //    $('button').click(function (e) {
+                
+        //    })
+        //    $('form').submit(function () {
+        //        return false;
+        //        $('#registerForm').validator('validate');
+        //        var parms = $('#registerForm').serializeArray()
+        //        $.post(
+        //            "http://localhost:54007/api/form/register",
+        //            parms,
+        //            function (data) {
+        //                if (data.success) {
+        //                    window.location.href = "login.html";
+        //                }
+        //                else {
+        //                    $('#returnMsg').text(data.messages[0]);
+        //                    $('#returnBox').show();
+        //                }
 
-                    },
-                    "json"
-                )
-            })
-        })
-</script>
+        //            },
+        //            "json"
+        //        )
+        //    })
+        //})
+    </script>
+</body>
+</html>

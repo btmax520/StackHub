@@ -8,43 +8,44 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="renderer" content="webkit">
     <meta http-equiv="Cache-Control" content="no-siteapp" />
-    <link rel="stylesheet" href="/css/amazeui.css" />
-    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="~/css/amazeui.css" />
+    <link rel="stylesheet" href="~/css/amazeui.tagsinput.css" />
+    <link rel="stylesheet" href="~/css/main.css" />
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/amazeui.min.js"></script>
+    <script src="~/js/amazeui.tagsinput.min.js"></script>
+    <script src="~/js/main.js"></script>
+    @RenderSection("PageStyle",false)
+    
 </head>
 <body>
-    <header data-am-widget="header" class="am-header am-header-default">
+    <header class="am-header am-header-default">
         <div class="am-header-left am-header-nav">
             <a href="#left-link" class="">
-                <span class="am-header-nav-title">合作伙伴</span></i>
+                <span class="">合作伙伴</span></i>
             </a>
         </div>
         <h1 class="am-header-title">
             <a href="#left-link" class="">
-                <span class="am-header-nav-title">镕诚集团</span></i>
+                <span class="">镕诚集团</span></i>
             </a>
         </h1>
         <div class="am-header-right am-header-nav">
-            <a href="/user/login">登录</a>
-            <a href="/user/register">注册</a>
-            <a href="/about">关于</a>
+            <a href="~/user/login">登录</a>
+            <a href="~/user/register">注册</a>
+            <a href="~/about">关于</a>
         </div>
     </header>
     <hr class="am-article-divider" />
     @RenderPage("Top.cshtml")
     <hr class="am-article-divider" />
-    <div class="am-g">
-        <div class="am-u-md-3">
-            @RenderPage("Left.cshtml")
+    @RenderBody()
+    <footer id="p-footer" class="footer am-g">
+        <div class="am-u-md-12 am-text-center">
+            <p class="">地址：云南省昆明市西福路云南新闻出版教育培训中心二楼　邮编：650228　电话：0871-64100802　传真：0871-64591108</p>
+            <p class="">© @DateTime.Now.Year 云南镕诚建设项目管理（集团）有限公司 版权所有　邮箱：<a href="mailto:YNRCJT@163.com">YNRCJT@163.com</a></p>
         </div>
-        <div class="am-u-md-9">
-            @RenderBody()
-        </div>
-    </div>
-        <footer class="my-footer">
-            <p>sidebar template<br><small>© Copyright 1233. by the StackHub.</small></p>
-        </footer>
-        <script src="/js/jquery.min.js"></script>
-        <script src="/js/amazeui.min.js"></script>
-        <script src="~/js/main.js"></script>
+    </footer>
+    @RenderSection("PageScript", false)
 </body>
 </html>

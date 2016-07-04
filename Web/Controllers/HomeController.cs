@@ -10,7 +10,11 @@ namespace Web.Controllers
     {
         public ActionResult Index()
         {
-            SetTopActive("hire");
+            return View();
+        }
+
+        public ActionResult Demo()
+        {
             return View();
         }
     }
