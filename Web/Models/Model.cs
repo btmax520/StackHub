@@ -159,6 +159,7 @@ namespace Web.Models
         public string Kind { get; set; }
         public string Skill { get; set; }
         public string Description { get; set; }
+        public string Amount { get; set; }
 
         public long CompanyID { get; set; }
         public long PublisherID { get; set; }
@@ -167,7 +168,7 @@ namespace Web.Models
 
         [NotMapped]
         public Dictionary<string, string> Dict { get; set; }
-
+        
         [NotMapped]
         public string CompanyName { get; set; }
         [NotMapped]

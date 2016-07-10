@@ -187,6 +187,7 @@
     <Compile Include="Controllers\ResumeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="FormModel\JobForm.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -216,6 +217,7 @@
     <Content Include="demo\color.html" />
     <Content Include="demo\form.html" />
     <Content Include="demo\list.html" />
+    <Content Include="demo\all.html" />
     <Content Include="demo\ui.html" />
     <Content Include="demo\index.html" />
     <Content Include="demo\NavMent.html" />

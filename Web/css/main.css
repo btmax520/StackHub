@@ -43,6 +43,12 @@ body {
     line-height:30px;
     width:100%;
 }
+footer {
+    padding: 30px 0 15px;
+    font-size: 1.8rem;
+    background: #555;
+    color: #fff;
+}
 .filter {
     padding-bottom:20px;
     margin-bottom:20px;
@@ -64,16 +70,27 @@ body {
     padding-bottom:20px;
     margin-bottom:20px;
 }
-.job-item {
-    margin-bottom:20px;
-    padding-top:20px;
-    padding-bottom:10px;
-    border: 1px solid #ddd;
-    font-size:1.8rem;
-    line-height:32px;
-    white-space:nowrap;
+.list-item a {
+    color:#000;
 }
-.job-item-title{
+.list-item {
+    border-bottom:1px solid #ddd;
+    line-height: 40px;
+    overflow: hidden;
+    padding: 0 5px;
+    font-size:2.2rem;
+    white-space:nowrap;
+    padding:10px;
+}
+.list-item:hover {
+    background-color:#f5f5f5;
+}
+.job-list {
+    border-top:1px solid #ddd;
+    border-left:1px solid #ddd;
+    border-right:1px solid #ddd;
+}
+/*.job-item-title{
     color:#69b345;
 }
 .job-item-salary {
@@ -84,6 +101,28 @@ body {
 }
 .job-item-timestamp{
     color:#ccc
+}*/
+.job-detail-head {
+    background-color:#f5f5f5;
+    padding-top:20px;
+}
+.job-detail-body {
+    border: 1px solid #eee;
+}
+.right_list {
+    border: 1px solid #eee;
+}
+
+.right_list h2{
+    background-color:#f5f5f5;
+}
+.tags span {
+    display: inline-block;
+    line-height: 26px;
+    margin: 0 15px 15px 0;
+    padding: 5px 10px;
+    border: 1px solid #FF9F20;
+    font-size: 1.8rem;
 }
 .tag {
     background-color:#f7f7f7;

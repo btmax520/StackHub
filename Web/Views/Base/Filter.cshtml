@@ -1,37 +1,41 @@
-﻿<div class="am-u-md-10 am-u-md-offset-1 search">
-    <form id="searchForm" action="~/Job/Index" method="get" class="am-form am-form-inline am-fr" style="width:80%">
-        <div class="am-form-group am-form-icon" style="width:80%">
-            <i class="am-icon-search"></i>
-            <input id="searchKeywords" type="text" class="am-form-field" placeholder="请输入职位或公司名称">
-            <input id="searchS" type="hidden" name="s" value="" />
-        </div>
-        <div class="am-form-group">
-            <button type="submit" class="am-btn am-btn-default">搜索</button>
-        </div>
-    </form>
+﻿<div class="am-g">
+    <div class="am-u-md-10 am-u-sm-centered search">
+        <form id="searchForm" action="~/Job/Index" method="get" class="am-form am-form-inline am-fr" style="width:80%">
+            <div class="am-form-group am-form-icon" style="width:80%">
+                <i class="am-icon-search"></i>
+                <input id="searchKeywords" type="text" class="am-form-field" placeholder="请输入职位或公司名称">
+                <input id="searchS" type="hidden" name="s" value="" />
+            </div>
+            <div class="am-form-group">
+                <button type="submit" class="am-btn am-btn-default">搜索</button>
+            </div>
+        </form>
+    </div>
 </div>
-<div id="filterPanel" class="am-u-md-10 am-u-md-offset-1 filter">
-    @{ var i = 0;
+<div class="am-g">
+    <div id="filterPanel" class="am-u-md-10 am-u-sm-centered filter">
+        @{ var i = 0;
         foreach (KeyValuePair<string, List<Web.Models.UIOption>> filter in ViewBag.Filters)
         {
-            <div>
-                <ul class="am-nav am-nav-pills filter-item @(i == 0 ? "":"am-collapse") ">
-                    <li><h4>@filter.Key</h4></li>
-                    @*<li class="all"><a class="list-query" href="#">所有</a></li>*@
-                    @foreach (Web.Models.UIOption option in filter.Value)
+                <div>
+                    <ul class="am-nav am-nav-pills filter-item @(i == 0 ? "":"am-collapse") ">
+                        <li><h4>@filter.Key</h4></li>
+                        @*<li class="all"><a class="list-query" href="#">所有</a></li>*@
+                        @foreach (Web.Models.UIOption option in filter.Value)
                     {
-                        <li class="@(option.Selected == "selected" ? "am-active" : "")"><a class="list-query" href="#" key="@option.Category" value="@option.Key">@option.Value</a></li>
+                            <li class="@(option.Selected == "selected" ? "am-active" : "")"><a class="list-query" href="#" key="@option.Category" value="@option.Key">@option.Value</a></li>
                     }
-                </ul>
-            </div>
+                    </ul>
+                </div>
             i++;
         }
-    }
-    @{if(i > 1) {
-    <div class="am-g">
-        <div class="am-u-sm-3 am-u-sm-centered am-text-center">
-            <button id="showFilter" type="button" class="am-btn am-btn-default" data-am-collapse="{target: '.filter-item.am-collapse'}">其他选项</button>
-        </div>
-    </div>
+        }
+        @{if(i > 1) {
+                <div class="am-g">
+                    <div class="am-u-sm-3 am-u-sm-centered am-text-center">
+                        <button id="showFilter" type="button" class="am-btn am-btn-default" data-am-collapse="{target: '.filter-item.am-collapse'}">其他选项</button>
+                    </div>
+                </div>
         }}
+    </div>
 </div>
